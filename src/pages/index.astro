@@ -1,17 +1,35 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import FeaturedEvent from "../components/FeaturedEvent.astro";
+import About from "../components/About.astro";
+import Gallery from "../components/Gallery.astro";
+import HypeReel from "../components/HypeReel.astro";
+import SocialCta from "../components/SocialCta.astro";
+import Footer from "../components/Footer.astro";
+import MobileTicketBar from "../components/MobileTicketBar.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Mile High Bulldogs — Redline at Altitude"
+  description="A Colorado community for Ferris State alumni, transplants, families, and fans. Rally with Mile High Bulldogs for the Avalanche vs. Red Wings matchup on November 7, 2026."
+>
+  <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+
+  <Header />
+
+  <main id="main">
+    <Hero />
+    <Marquee />
+    <FeaturedEvent />
+    <About />
+    <Gallery />
+    <HypeReel />
+    <SocialCta />
+  </main>
+
+  <Footer />
+  <MobileTicketBar />
+</Layout>

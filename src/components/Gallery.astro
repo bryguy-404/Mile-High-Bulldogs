@@ -1,0 +1,81 @@
+---
+// Every tile is a placeholder until client-supplied or approved real alumni
+// photography is provided — never stock (see BLUEPRINT.md → Gallery).
+const tiles = [
+  {
+    number: "Photo 01",
+    caption: "Client-supplied group celebration",
+    ariaLabel:
+      "Placeholder for a client-supplied Mile High Bulldogs group celebration photo",
+    span: "md:col-span-7",
+    minHeight: "min-h-72",
+  },
+  {
+    number: "Photo 02",
+    caption: "Client-supplied watch party",
+    ariaLabel: "Placeholder for a client-supplied alumni watch party photo",
+    span: "md:col-span-5",
+    minHeight: "min-h-72",
+  },
+  {
+    number: "Photo 03",
+    caption: "Client-supplied Colorado gathering",
+    ariaLabel:
+      "Placeholder for a client-supplied Colorado alumni gathering photo",
+    span: "md:col-span-5",
+    minHeight: "min-h-60",
+  },
+  {
+    number: "Photo 04",
+    caption: "Client-supplied candid energy",
+    ariaLabel: "Placeholder for a client-supplied candid alumni photo",
+    span: "md:col-span-7",
+    minHeight: "min-h-60",
+  },
+];
+---
+
+<section id="gallery" class="bg-secondary px-4 py-20 text-white sm:px-6">
+  <div class="mx-auto max-w-7xl">
+    <div
+      class="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"
+    >
+      <div>
+        <p class="text-xs font-black uppercase tracking-[.25em] text-accent">
+          Real people only
+        </p>
+        <h2
+          class="mt-2 font-heading text-5xl font-black uppercase sm:text-7xl"
+        >
+          The Bulldog Roll
+        </h2>
+      </div>
+      <p class="max-w-md text-sm text-white/60">
+        Final gallery must use client-supplied or approved real alumni
+        photography—never stock.
+      </p>
+    </div>
+
+    <div class="grid gap-3 md:grid-cols-12">
+      {
+        tiles.map((tile) => (
+          <div
+            role="img"
+            aria-label={tile.ariaLabel}
+            class:list={[
+              "photo flex items-end p-6",
+              tile.minHeight,
+              tile.span,
+            ]}
+          >
+            <p class="text-xs font-black uppercase tracking-[.2em]">
+              <span class="text-accent">{tile.number}</span>
+              <br />
+              {tile.caption}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

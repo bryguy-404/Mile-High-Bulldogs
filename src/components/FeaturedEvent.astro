@@ -1,0 +1,56 @@
+---
+// Only the matchup and date are confirmed content — the placeholder note about
+// ticket URL, venue, time, and pricing is intentional (see BLUEPRINT.md).
+---
+
+<section id="event" class="bg-white px-4 py-20 sm:px-6">
+  <div
+    class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:items-end"
+  >
+    <div>
+      <p
+        class="text-xs font-black uppercase tracking-[.25em] text-primary"
+      >
+        First on the calendar
+      </p>
+      <p
+        class="mt-4 font-heading text-7xl font-black leading-none text-secondary"
+      >
+        NOV 7<br /><span class="text-primary">2026</span>
+      </p>
+    </div>
+
+    <div class="border-l-8 border-accent bg-foreground p-7 text-white sm:p-10">
+      <p class="text-xs font-bold uppercase tracking-[.2em] text-white/55">
+        Mile High Bulldogs featured event
+      </p>
+      <h2
+        class="mt-3 font-heading text-5xl font-black uppercase leading-none sm:text-6xl"
+      >
+        Avalanche <span class="text-accent">vs.</span> Red Wings
+      </h2>
+      <p class="mt-5 max-w-2xl text-white/70">
+        Get ready to show up together. Confirmed details are limited to the
+        matchup and date.
+      </p>
+
+      <div
+        class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+      >
+        <a
+          href="#ticket-note"
+          data-placeholder="Ticket URL to be supplied"
+          class="bg-primary px-7 py-4 text-sm font-black uppercase tracking-[.16em] hover:bg-accent hover:text-foreground"
+        >
+          Get Tickets →
+        </a>
+        <p
+          id="ticket-note"
+          class="max-w-sm text-xs leading-relaxed text-white/50"
+        >
+          Ticket URL, venue, time, and pricing will be added when supplied.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

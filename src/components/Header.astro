@@ -1,0 +1,102 @@
+---
+const navLinks = [
+  { href: "#event", label: "Event" },
+  { href: "#about", label: "About" },
+  { href: "#gallery", label: "Gallery" },
+  { href: "#reel", label: "Hype Reel" },
+];
+
+const mobileLinks = [
+  { href: "#event", label: "Featured Event" },
+  { href: "#about", label: "About" },
+  { href: "#gallery", label: "Real Alumni Gallery" },
+  { href: "#reel", label: "Hype Reel" },
+  { href: "#social", label: "Facebook + Instagram" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b-4 border-foreground bg-background">
+  <div
+    class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6"
+  >
+    <a
+      href="#top"
+      class="flex shrink-0 items-center bg-white px-2 py-1"
+      aria-label="Mile High Bulldogs home"
+    >
+      <img
+        src="/logo.png"
+        alt="Mile High Bulldogs logo"
+        width="200"
+        height="136"
+        class="h-11 w-auto max-w-[170px] object-contain"
+      />
+    </a>
+
+    <nav
+      class="hidden items-center gap-7 text-xs font-extrabold uppercase tracking-[.16em] md:flex"
+      aria-label="Primary navigation"
+    >
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="hover:text-primary">
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="#event" class="bg-primary px-5 py-3 text-white hover:bg-secondary">
+        Get Tickets
+      </a>
+    </nav>
+
+    <button
+      id="menu-button"
+      type="button"
+      class="grid h-11 w-11 place-items-center border-2 border-foreground md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Toggle navigation"
+    >
+      <span class="space-y-1.5">
+        <span class="block h-0.5 w-6 bg-foreground"></span>
+        <span class="block h-0.5 w-6 bg-foreground"></span>
+        <span class="block h-0.5 w-6 bg-foreground"></span>
+      </span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden border-t-2 border-foreground bg-accent px-4 py-5 md:hidden"
+    aria-label="Mobile navigation"
+  >
+    <div class="grid gap-3 font-extrabold uppercase tracking-wider">
+      {mobileLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+  </nav>
+</header>
+
+<script>
+  const button = document.getElementById("menu-button");
+  const menu = document.getElementById("mobile-menu");
+
+  if (button && menu) {
+    const close = () => {
+      menu.classList.add("hidden");
+      button.setAttribute("aria-expanded", "false");
+    };
+
+    button.addEventListener("click", () => {
+      const hidden = menu.classList.toggle("hidden");
+      button.setAttribute("aria-expanded", String(!hidden));
+    });
+
+    menu.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", close)
+    );
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+  }
+</script>

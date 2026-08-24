@@ -1,1 +1,88 @@
 @import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — CSS mirror of src/lib/theme.config.ts
+   Keep these values in sync with that file. Components reference the semantic
+   names only (bg-primary, text-foreground, font-heading …) — never raw hex.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-primary: #BA0C2F;
+  --color-secondary: #65051A;
+  --color-accent: #FFD043;
+  --color-background: #F7F5EF;
+  --color-foreground: #111111;
+  --color-muted: #6D6C6A;
+
+  --font-heading: "Barlow Condensed", sans-serif;
+  --font-body: Inter, sans-serif;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Global focus treatment: 3px gold outline, 3px offset. */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Signature visual treatments (see BLUEPRINT.md → Unique visual treatments).
+   All colors resolve from the tokens above via color-mix for the alpha steps.
+   --------------------------------------------------------------------------- */
+
+/* Ticket-stub clip: slices the top-right and bottom-left corners. */
+@utility cut {
+  clip-path: polygon(0 0, 94% 0, 100% 10%, 100% 100%, 6% 100%, 0 90%);
+}
+
+/* Printed-paper grain for dark and crimson surfaces. */
+@utility grain {
+  background-image: radial-gradient(
+    color-mix(in srgb, #fff 13%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 5px 5px;
+}
+
+/* Photo placeholder: crimson-to-dark wash with faint diagonal gold pinstripes. */
+@utility photo {
+  background-color: var(--color-secondary);
+  background-image:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary) 87%, transparent),
+      color-mix(in srgb, var(--color-foreground) 53%, transparent)
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 12px,
+      color-mix(in srgb, var(--color-accent) 13%, transparent) 12px 14px
+    );
+}
+
+/* Perforated ticket edge: half-dot notches bite into the top and bottom edges. */
+@utility perforated {
+  background-image: radial-gradient(
+    circle,
+    var(--color-foreground) 2px,
+    transparent 3px
+  );
+  background-size: 14px 14px;
+  background-position: 0 -7px;
+}
