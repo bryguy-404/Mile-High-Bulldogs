@@ -4,17 +4,15 @@ import logo from "../assets/brand/mile-high-bulldogs.svg";
 import { siteConfig } from "../lib/site.config";
 
 const navLinks = [
-  { href: "#event", label: "Event" },
+  { href: "#event", label: "Events" },
   { href: "#story", label: "Our Story" },
   { href: "#gallery", label: "Gallery" },
 ];
 
 const mobileLinks = [
-  { href: "#event", label: "Featured Event", external: false },
+  { href: "#event", label: "Events", external: false },
   { href: "#story", label: "Our Story", external: false },
   { href: "#gallery", label: "Gallery", external: false },
-  { href: siteConfig.facebookUrl, label: "Facebook Group ↗", external: true },
-  { href: siteConfig.instagramUrl, label: "Instagram ↗", external: true },
 ];
 ---
 
@@ -42,7 +40,7 @@ const mobileLinks = [
     </a>
 
     <nav
-      class="hidden items-center gap-7 text-xs font-extrabold uppercase tracking-[.16em] md:flex"
+      class="hidden items-center gap-5 text-xs font-extrabold uppercase tracking-[.16em] lg:flex"
       aria-label="Primary navigation"
     >
       {
@@ -60,12 +58,20 @@ const mobileLinks = [
       >
         Get Tickets
       </a>
+      <button
+        type="button"
+        disabled
+        class="cursor-not-allowed border-2 border-foreground/35 px-4 py-[10px] text-center text-foreground/50"
+        title="The Mile High Bulldogs swag shop is coming soon"
+      >
+        Get Swag <span aria-hidden="true">—</span> Coming Soon
+      </button>
     </nav>
 
     <button
       id="menu-button"
       type="button"
-      class="grid h-11 w-11 place-items-center border-2 border-foreground md:hidden"
+      class="grid h-11 w-11 place-items-center border-2 border-foreground lg:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Toggle navigation"
@@ -80,21 +86,50 @@ const mobileLinks = [
 
   <nav
     id="mobile-menu"
-    class="hidden border-t-2 border-foreground bg-accent px-4 py-5 md:hidden"
+    class="hidden border-t-2 border-foreground bg-accent px-4 py-5 lg:hidden"
     aria-label="Mobile navigation"
   >
     <div class="grid gap-3 font-extrabold uppercase tracking-wider">
       {
         mobileLinks.map((link) => (
-          <a
-            href={link.href}
-            target={link.external ? "_blank" : undefined}
-            rel={link.external ? "noopener noreferrer" : undefined}
-          >
-            {link.label}
-          </a>
+          <a href={link.href}>{link.label}</a>
         ))
       }
+      <div class="mt-2 flex items-center gap-3 border-t-2 border-foreground/20 pt-4">
+        <a
+          href={siteConfig.facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Mile High Bulldogs Facebook group"
+          title="Facebook group"
+          class="grid h-11 w-11 place-items-center border-2 border-foreground bg-white"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-secondary">
+            <path d="M13.5 22v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8.3V14h2.8v8h2.4Z" />
+          </svg>
+        </a>
+        <a
+          href={siteConfig.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Mile High Bulldogs on Instagram"
+          title="Instagram"
+          class="grid h-11 w-11 place-items-center border-2 border-foreground bg-white"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-none stroke-primary stroke-[2.2]">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4.2" />
+            <circle cx="17.4" cy="6.7" r="1" class="fill-primary stroke-none" />
+          </svg>
+        </a>
+        <button
+          type="button"
+          disabled
+          class="ml-auto cursor-not-allowed border-2 border-foreground/35 px-3 py-2 text-[10px] text-foreground/55"
+        >
+          Get Swag — Coming Soon
+        </button>
+      </div>
     </div>
   </nav>
 </header>

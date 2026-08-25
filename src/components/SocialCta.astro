@@ -19,22 +19,32 @@ import { siteConfig } from "../lib/site.config";
       </p>
     </div>
 
-    <div class="flex flex-col gap-3 sm:flex-row">
+    <div class="flex flex-wrap items-center gap-3">
       <a
         href={siteConfig.facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="bg-white px-6 py-4 text-center text-sm font-black uppercase tracking-wider text-foreground"
+        aria-label="Join the Mile High Bulldogs Facebook group"
+        title="Facebook group"
+        class="grid h-16 w-16 place-items-center bg-white text-secondary transition-transform hover:-translate-y-1"
       >
-        Facebook Group ↗
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-9 w-9 fill-current">
+          <path d="M13.5 22v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8.3V14h2.8v8h2.4Z" />
+        </svg>
       </a>
       <a
         href={siteConfig.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="border-2 border-white px-6 py-4 text-center text-sm font-black uppercase tracking-wider"
+        aria-label="Follow the Mile High Bulldogs on Instagram"
+        title="Instagram"
+        class="grid h-16 w-16 place-items-center border-2 border-white text-white transition-transform hover:-translate-y-1 hover:bg-white hover:text-primary"
       >
-        Instagram ↗
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-8 w-8 fill-none stroke-current stroke-[2]">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4.2" />
+          <circle cx="17.4" cy="6.7" r="1" class="fill-current stroke-none" />
+        </svg>
       </a>
       <a
         href={siteConfig.ticketUrl}

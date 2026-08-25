@@ -8,8 +8,6 @@ import hockeyFans from "../assets/photos/ferris-detroit-fans-ball-arena.jpg";
 const tiles = [
   {
     src: outdoorGroup,
-    number: "Photo 01",
-    caption: "Bulldogs together in Colorado",
     alt: "Mile High Bulldogs supporters wearing matching shirts at an outdoor gathering",
     span: "md:col-span-7",
     minHeight: "min-h-[22rem]",
@@ -17,8 +15,6 @@ const tiles = [
   },
   {
     src: arenaSupporters,
-    number: "Photo 02",
-    caption: "Overlooking Ball Arena",
     alt: "Two Mile High Bulldogs supporters overlooking Ball Arena",
     span: "md:col-span-5",
     minHeight: "min-h-[22rem]",
@@ -26,8 +22,6 @@ const tiles = [
   },
   {
     src: mascotAlumni,
-    number: "Photo 03",
-    caption: "Back with the Bulldog",
     alt: "Ferris State alumni with the bulldog mascot at a Ferris State game",
     span: "md:col-span-5",
     minHeight: "min-h-[20rem]",
@@ -35,8 +29,6 @@ const tiles = [
   },
   {
     src: hockeyFans,
-    number: "Photo 04",
-    caption: "Hockey brings Bulldogs together",
     alt: "Ferris State and Detroit hockey fans together at Ball Arena",
     span: "md:col-span-7",
     minHeight: "min-h-[20rem]",
@@ -88,13 +80,6 @@ const tiles = [
                 tile.objectPosition,
               ]}
             />
-            <figcaption
-              class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground via-foreground/75 to-transparent px-6 pb-5 pt-14 text-xs font-black uppercase tracking-[.2em]"
-            >
-              <span class="text-accent">{tile.number}</span>
-              <br />
-              {tile.caption}
-            </figcaption>
           </figure>
         ))
       }
