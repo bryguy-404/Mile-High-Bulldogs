@@ -1,35 +1,57 @@
 ---
-// Video placeholder — approved alumni footage to be supplied by the client.
+import { siteConfig } from "../lib/site.config";
 ---
 
 <section id="reel" class="bg-foreground px-4 py-20 text-white sm:px-6">
   <div class="mx-auto max-w-6xl">
-    <div
-      role="img"
-      aria-label="Hype reel placeholder awaiting approved Mile High Bulldogs video"
-      class="grain relative grid min-h-[390px] place-items-center overflow-hidden border-4 border-accent bg-primary p-8 text-center"
-    >
-      <div
-        class="absolute inset-x-0 top-8 -rotate-3 bg-foreground py-3 text-sm font-black uppercase tracking-[.35em]"
-      >
-        Hype Reel · Video Placeholder
-      </div>
+    <div class="mb-8 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
       <div>
-        <div
-          class="mx-auto grid h-24 w-24 place-items-center border-4 border-white text-4xl"
-          aria-hidden="true"
-        >
-          ▶
-        </div>
+        <p class="text-xs font-black uppercase tracking-[.25em] text-accent">
+          See the community in action
+        </p>
         <h2
-          class="mt-6 font-heading text-5xl font-black uppercase sm:text-7xl"
+          class="mt-2 font-heading text-5xl font-black uppercase sm:text-7xl"
         >
           Turn It Up.
         </h2>
-        <p class="mt-3 text-sm text-white/70">
-          Approved alumni footage and final video asset to be supplied.
-        </p>
       </div>
+      <p id="reel-description" class="max-w-md text-sm leading-relaxed text-white/65">
+        Game days, watch parties, and the people who keep Bulldog pride loud in
+        Colorado.
+      </p>
     </div>
+
+    <div
+      class="grain relative overflow-hidden border-4 border-accent bg-primary p-2 shadow-[12px_12px_0_var(--color-primary)] sm:p-3"
+    >
+      <div
+        class="absolute left-4 top-4 z-10 -rotate-2 bg-foreground px-4 py-2 text-[10px] font-black uppercase tracking-[.25em] sm:text-xs"
+      >
+        Mile High Bulldogs · Hype Reel
+      </div>
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster={siteConfig.reelPosterUrl}
+        aria-describedby="reel-description"
+        class="aspect-video w-full bg-foreground object-cover"
+      >
+        <source src={siteConfig.reelUrl} type="video/mp4" />
+        Your browser cannot play this video.
+        <a href={siteConfig.reelUrl}>Download the Mile High Bulldogs hype reel.</a>
+      </video>
+    </div>
+
+    <p class="mt-5 text-xs text-white/58">
+      Having trouble with playback?
+      <a
+        href={siteConfig.reelUrl}
+        class="font-bold text-white underline decoration-accent underline-offset-4"
+        download
+      >
+        Download the hype reel.
+      </a>
+    </p>
   </div>
 </section>

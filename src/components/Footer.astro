@@ -1,12 +1,14 @@
 ---
-const year = 2026;
+import { siteConfig } from "../lib/site.config";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-foreground px-4 py-9 text-white/55 sm:px-6">
   <div
     class="mx-auto flex max-w-7xl flex-col gap-2 text-xs sm:flex-row sm:justify-between"
   >
-    <p>© {year} Mile High Bulldogs</p>
-    <p>A Colorado community for Ferris State alumni and fans.</p>
+    <p>© {year} {siteConfig.name}</p>
+    <p>{siteConfig.tagline}</p>
   </div>
 </footer>

@@ -6,11 +6,11 @@
    names only (bg-primary, text-foreground, font-heading …) — never raw hex.
    --------------------------------------------------------------------------- */
 @theme {
-  --color-primary: #BA0C2F;
-  --color-secondary: #65051A;
-  --color-accent: #FFD043;
+  --color-primary: #C23541;
+  --color-secondary: #343F6B;
+  --color-accent: #FBCB30;
   --color-background: #F7F5EF;
-  --color-foreground: #111111;
+  --color-foreground: #363435;
   --color-muted: #6D6C6A;
 
   --font-heading: "Barlow Condensed", sans-serif;
@@ -27,6 +27,10 @@ html {
 
 body {
   font-family: var(--font-body);
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 /* Global focus treatment: 3px gold outline, 3px offset. */
@@ -58,31 +62,4 @@ body {
     transparent 1px
   );
   background-size: 5px 5px;
-}
-
-/* Photo placeholder: crimson-to-dark wash with faint diagonal gold pinstripes. */
-@utility photo {
-  background-color: var(--color-secondary);
-  background-image:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--color-primary) 87%, transparent),
-      color-mix(in srgb, var(--color-foreground) 53%, transparent)
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent 0 12px,
-      color-mix(in srgb, var(--color-accent) 13%, transparent) 12px 14px
-    );
-}
-
-/* Perforated ticket edge: half-dot notches bite into the top and bottom edges. */
-@utility perforated {
-  background-image: radial-gradient(
-    circle,
-    var(--color-foreground) 2px,
-    transparent 3px
-  );
-  background-size: 14px 14px;
-  background-position: 0 -7px;
 }

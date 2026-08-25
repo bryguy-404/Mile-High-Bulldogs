@@ -1,15 +1,35 @@
 ---
-// Decorative mountain skyline + grain overlay per BLUEPRINT.md → Hero.
+import { siteConfig } from "../lib/site.config";
 ---
 
 <section
   id="top"
-  class="relative isolate overflow-hidden bg-foreground text-white"
+  class="relative isolate flex min-h-[680px] overflow-hidden bg-foreground text-white sm:min-h-[720px] lg:min-h-[calc(100svh-5rem)]"
 >
-  <div class="grain absolute inset-0 opacity-40"></div>
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url(${siteConfig.reelPosterUrl});`}
+    aria-hidden="true"
+  ></div>
+  <video
+    class="hero-reel absolute inset-0 h-full w-full object-cover object-center"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster={siteConfig.reelPosterUrl}
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <source src={siteConfig.heroReelUrl} type="video/mp4" />
+  </video>
+
+  <div class="hero-shade absolute inset-0"></div>
+  <div class="grain absolute inset-0 opacity-30 mix-blend-soft-light"></div>
 
   <svg
-    class="absolute bottom-0 left-0 h-48 w-full text-primary"
+    class="absolute bottom-0 left-0 z-20 h-44 w-full text-primary sm:h-52"
     viewBox="0 0 1200 220"
     preserveAspectRatio="none"
     aria-hidden="true"
@@ -26,72 +46,89 @@
   </svg>
 
   <div
-    class="relative mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.1fr_.9fr] lg:items-center"
+    class="relative z-10 mx-auto flex w-full max-w-7xl items-center px-4 pb-40 pt-12 sm:px-6 sm:pb-48 sm:pt-16"
   >
-    <div>
+    <div class="max-w-3xl">
       <p
-        class="mb-5 inline-flex border-2 border-accent px-3 py-2 text-xs font-extrabold uppercase tracking-[.2em] text-accent"
+        class="mb-5 inline-flex border-2 border-accent bg-foreground/55 px-3 py-2 text-xs font-extrabold uppercase tracking-[.2em] text-accent backdrop-blur-sm"
       >
         Ferris alumni + fans · Colorado
       </p>
 
       <h1
-        class="font-heading text-[19vw] font-black uppercase leading-[.76] tracking-[-.035em] sm:text-8xl sm:leading-none lg:text-[8.6rem]"
+        aria-label="Colorado Bulldogs. Game On."
+        class="font-heading text-[19vw] font-black uppercase leading-[.76] tracking-[-.035em] drop-shadow-xl sm:text-8xl sm:leading-[.82] lg:text-[clamp(6.5rem,9vw,8.6rem)]"
       >
         Colorado<br /><span class="text-primary">Bulldogs.</span><br />Game On.
       </h1>
 
       <p
-        class="mt-7 max-w-xl text-base font-semibold leading-relaxed text-white/75 sm:text-lg"
+        class="mt-7 max-w-xl text-base font-semibold leading-relaxed text-white/85 drop-shadow-md sm:text-lg"
       >
-        School pride meets mountain air. Rally with Mile High Bulldogs for
-        community, connection, and a can’t-miss hockey matchup.
+        More than 1,200 miles from Big Rapids, Colorado is still Bulldog
+        Country. Reconnect with Ferris alumni, meet new friends, and keep the
+        Bulldog spirit alive at a Mile High.
       </p>
 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a
-          href="#event"
+          href={siteConfig.ticketUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="bg-accent px-7 py-4 text-center text-sm font-black uppercase tracking-[.16em] text-foreground hover:bg-white"
         >
           Get Tickets →
         </a>
         <a
-          href="#social"
-          class="border-2 border-white px-7 py-4 text-center text-sm font-black uppercase tracking-[.16em] hover:bg-white hover:text-foreground"
+          href={siteConfig.facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-2 border-white bg-foreground/35 px-7 py-4 text-center text-sm font-black uppercase tracking-[.16em] backdrop-blur-sm hover:bg-white hover:text-foreground"
         >
-          Join the Group
+          Join the Group ↗
         </a>
       </div>
     </div>
-
-    <article
-      class="cut relative mx-auto w-full max-w-md bg-primary p-2 shadow-[18px_18px_0_var(--color-accent)]"
-    >
-      <div class="border-2 border-white/60 p-7 sm:p-10">
-        <p
-          class="text-xs font-extrabold uppercase tracking-[.25em] text-accent"
-        >
-          Featured event
-        </p>
-        <div
-          class="mt-4 font-heading text-[6.5rem] font-black leading-[.7] tracking-tighter"
-        >
-          11<span class="text-accent">.</span>07
-        </div>
-        <div class="mt-2 font-heading text-5xl font-black">2026</div>
-        <div class="my-7 h-1 bg-white"></div>
-        <p class="font-heading text-4xl font-black uppercase leading-none">
-          Avalanche
-        </p>
-        <p
-          class="my-2 text-sm font-black uppercase tracking-[.3em] text-accent"
-        >
-          vs.
-        </p>
-        <p class="font-heading text-4xl font-black uppercase leading-none">
-          Red Wings
-        </p>
-      </div>
-    </article>
   </div>
 </section>
+
+<style>
+  .hero-shade {
+    background:
+      linear-gradient(
+        to top,
+        color-mix(in srgb, var(--color-foreground) 76%, transparent) 0%,
+        transparent 58%,
+        color-mix(in srgb, var(--color-foreground) 24%, transparent) 100%
+      ),
+      linear-gradient(
+        to right,
+        var(--color-foreground) 0%,
+        color-mix(in srgb, var(--color-foreground) 84%, transparent) 46%,
+        color-mix(in srgb, var(--color-foreground) 14%, transparent) 100%
+      );
+  }
+
+  @media (max-width: 767px) {
+    .hero-shade {
+      background:
+        linear-gradient(
+          to top,
+          color-mix(in srgb, var(--color-foreground) 82%, transparent) 0%,
+          color-mix(in srgb, var(--color-foreground) 42%, transparent) 55%,
+          color-mix(in srgb, var(--color-foreground) 58%, transparent) 100%
+        ),
+        linear-gradient(
+          to right,
+          color-mix(in srgb, var(--color-foreground) 78%, transparent) 0%,
+          color-mix(in srgb, var(--color-foreground) 28%, transparent) 100%
+        );
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-reel {
+      display: none;
+    }
+  }
+</style>

@@ -1,26 +1,50 @@
 ---
-// Only the matchup and date are confirmed content — the placeholder note about
-// ticket URL, venue, time, and pricing is intentional (see BLUEPRINT.md).
+import { Image } from "astro:assets";
+import eventPhoto from "../assets/photos/event-ball-arena-mascot.jpg";
+import { siteConfig } from "../lib/site.config";
+
+const { event } = siteConfig;
 ---
 
 <section id="event" class="bg-white px-4 py-20 sm:px-6">
   <div
-    class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:items-end"
+    class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-stretch"
   >
-    <div>
-      <p
-        class="text-xs font-black uppercase tracking-[.25em] text-primary"
+    <div class="grid min-w-0 gap-5">
+      <div>
+        <p class="text-xs font-black uppercase tracking-[.25em] text-primary">
+          First on the calendar
+        </p>
+        <p
+          class="mt-4 font-heading text-7xl font-black leading-none text-secondary"
+        >
+          NOV 7<br /><span class="text-primary">2026</span>
+        </p>
+      </div>
+
+      <figure
+        class="relative min-h-[360px] overflow-hidden border-4 border-foreground bg-secondary"
       >
-        First on the calendar
-      </p>
-      <p
-        class="mt-4 font-heading text-7xl font-black leading-none text-secondary"
-      >
-        NOV 7<br /><span class="text-primary">2026</span>
-      </p>
+        <Image
+          src={eventPhoto}
+          alt="Ferris State bulldog mascot outside Ball Arena"
+          widths={[480, 720, 1024]}
+          sizes="(min-width: 1024px) 36vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <figcaption
+          class="absolute inset-x-0 bottom-0 bg-accent px-4 py-3 text-xs font-black uppercase tracking-[.18em] text-foreground"
+        >
+          Bulldog Country at Ball Arena
+        </figcaption>
+      </figure>
     </div>
 
-    <div class="border-l-8 border-accent bg-foreground p-7 text-white sm:p-10">
+    <div
+      class="flex min-w-0 flex-col border-l-8 border-accent bg-foreground p-7 text-white sm:p-10"
+    >
       <p class="text-xs font-bold uppercase tracking-[.2em] text-white/55">
         Mile High Bulldogs featured event
       </p>
@@ -29,26 +53,82 @@
       >
         Avalanche <span class="text-accent">vs.</span> Red Wings
       </h2>
-      <p class="mt-5 max-w-2xl text-white/70">
-        Get ready to show up together. Confirmed details are limited to the
-        matchup and date.
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-white/72">
+        Join Ferris State alumni and friends for a night of hockey at Ball
+        Arena. Purchase discounted alumni tickets by October 1 so the Mile High
+        Bulldogs can show up and sit together.
       </p>
 
-      <div
-        class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
-      >
+      <dl class="mt-8 grid gap-px bg-white/15 sm:grid-cols-2">
+        <div class="bg-foreground p-4">
+          <dt class="text-[10px] font-black uppercase tracking-[.2em] text-accent">
+            Game
+          </dt>
+          <dd class="mt-1 font-heading text-2xl font-black uppercase">
+            {event.date} · {event.time}
+          </dd>
+        </div>
+        <div class="bg-foreground p-4">
+          <dt class="text-[10px] font-black uppercase tracking-[.2em] text-accent">
+            Venue
+          </dt>
+          <dd class="mt-1 font-heading text-2xl font-black uppercase">
+            {event.venue}
+          </dd>
+        </div>
+        <div class="bg-foreground p-4">
+          <dt class="text-[10px] font-black uppercase tracking-[.2em] text-accent">
+            Before the game
+          </dt>
+          <dd class="mt-1 font-heading text-2xl font-black uppercase">
+            {event.pregame}
+          </dd>
+        </div>
+        <div class="bg-foreground p-4">
+          <dt class="text-[10px] font-black uppercase tracking-[.2em] text-accent">
+            Ticket deadline
+          </dt>
+          <dd class="mt-1 font-heading text-2xl font-black uppercase">
+            {event.ticketDeadline}
+          </dd>
+        </div>
+      </dl>
+
+      <div class="mt-8 flex flex-col items-start gap-3 sm:flex-row">
         <a
-          href="#ticket-note"
-          data-placeholder="Ticket URL to be supplied"
-          class="bg-primary px-7 py-4 text-sm font-black uppercase tracking-[.16em] hover:bg-accent hover:text-foreground"
+          href={siteConfig.ticketUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-primary px-7 py-4 text-center text-sm font-black uppercase tracking-[.16em] hover:bg-accent hover:text-foreground"
         >
           Get Tickets →
         </a>
-        <p
-          id="ticket-note"
-          class="max-w-sm text-xs leading-relaxed text-white/50"
+        <a
+          href={siteConfig.flyerUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-2 border-white px-7 py-[14px] text-center text-sm font-black uppercase tracking-[.16em] hover:bg-white hover:text-foreground"
         >
-          Ticket URL, venue, time, and pricing will be added when supplied.
+          View Event Flyer ↗
+        </a>
+      </div>
+
+      <div class="mt-auto pt-8 text-xs leading-relaxed text-white/62">
+        <p>Questions or group seating for eight or more?</p>
+        <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+          <span class="font-bold text-white">{event.contact.name}</span>
+          <a
+            href={`mailto:${event.contact.email}`}
+            class="break-all font-bold text-white underline decoration-accent underline-offset-4"
+          >
+            {event.contact.email}
+          </a>
+          <a
+            href={event.contact.phoneHref}
+            class="font-bold text-white underline decoration-accent underline-offset-4"
+          >
+            {event.contact.phone}
+          </a>
         </p>
       </div>
     </div>

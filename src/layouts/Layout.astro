@@ -8,7 +8,11 @@ interface Props {
   image?: string;
 }
 
-const { title, description, image = "/logo.png" } = Astro.props;
+const {
+  title,
+  description,
+  image = "/social/mile-high-bulldogs.jpg",
+} = Astro.props;
 
 // Astro.site is configured in astro.config.mjs. Fall back to a relative URL so
 // the build still works before the production domain is set.
@@ -21,10 +25,10 @@ const socialImageURL = new URL(image, Astro.site ?? Astro.url);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#343F6B" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -36,6 +40,10 @@ const socialImageURL = new URL(image, Astro.site ?? Astro.url);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
+    <meta
+      property="og:image:alt"
+      content="Mile High Bulldogs supporters gathered together in Colorado"
+    />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->

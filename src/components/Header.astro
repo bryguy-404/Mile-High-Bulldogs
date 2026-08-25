@@ -1,35 +1,43 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/brand/mile-high-bulldogs.svg";
+import { siteConfig } from "../lib/site.config";
+
 const navLinks = [
   { href: "#event", label: "Event" },
-  { href: "#about", label: "About" },
+  { href: "#story", label: "Our Story" },
   { href: "#gallery", label: "Gallery" },
-  { href: "#reel", label: "Hype Reel" },
 ];
 
 const mobileLinks = [
-  { href: "#event", label: "Featured Event" },
-  { href: "#about", label: "About" },
-  { href: "#gallery", label: "Real Alumni Gallery" },
-  { href: "#reel", label: "Hype Reel" },
-  { href: "#social", label: "Facebook + Instagram" },
+  { href: "#event", label: "Featured Event", external: false },
+  { href: "#story", label: "Our Story", external: false },
+  { href: "#gallery", label: "Gallery", external: false },
+  { href: siteConfig.facebookUrl, label: "Facebook Group ↗", external: true },
+  { href: siteConfig.instagramUrl, label: "Instagram ↗", external: true },
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b-4 border-foreground bg-background">
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b-4 border-foreground bg-background"
+>
   <div
-    class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6"
+    class="header-inner mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6"
   >
     <a
       href="#top"
-      class="flex shrink-0 items-center bg-white px-2 py-1"
+      class="logo-link flex shrink-0 items-center"
       aria-label="Mile High Bulldogs home"
     >
-      <img
-        src="/logo.png"
+      <Image
+        src={logo}
         alt="Mile High Bulldogs logo"
         width="200"
         height="136"
-        class="h-11 w-auto max-w-[170px] object-contain"
+        loading="eager"
+        fetchpriority="high"
+        class="site-logo h-[3.25rem] w-auto max-w-[180px] object-contain"
       />
     </a>
 
@@ -44,7 +52,12 @@ const mobileLinks = [
           </a>
         ))
       }
-      <a href="#event" class="bg-primary px-5 py-3 text-white hover:bg-secondary">
+      <a
+        href={siteConfig.ticketUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-primary px-5 py-3 text-white hover:bg-secondary"
+      >
         Get Tickets
       </a>
     </nav>
@@ -71,14 +84,32 @@ const mobileLinks = [
     aria-label="Mobile navigation"
   >
     <div class="grid gap-3 font-extrabold uppercase tracking-wider">
-      {mobileLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      {
+        mobileLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </nav>
 </header>
 
 <script>
+  const header = document.getElementById("site-header");
   const button = document.getElementById("menu-button");
   const menu = document.getElementById("mobile-menu");
+
+  const syncHeader = () => {
+    header?.classList.toggle("is-scrolled", window.scrollY > 32);
+  };
+
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
 
   if (button && menu) {
     const close = () => {
@@ -100,3 +131,44 @@ const mobileLinks = [
     });
   }
 </script>
+
+<style>
+  .header-inner,
+  .logo-link,
+  .site-logo {
+    transition:
+      height 220ms ease,
+      transform 220ms ease,
+      filter 220ms ease;
+  }
+
+  .logo-link {
+    transform-origin: left center;
+  }
+
+  .site-logo {
+    filter: drop-shadow(0 2px 0 color-mix(in srgb, var(--color-foreground) 18%, transparent));
+  }
+
+  @media (min-width: 768px) {
+    #site-header.is-scrolled .header-inner {
+      height: 4.5rem;
+    }
+
+    #site-header.is-scrolled .logo-link {
+      transform: translateY(-1px) scale(1.07);
+    }
+
+    #site-header.is-scrolled .site-logo {
+      filter: drop-shadow(4px 4px 0 var(--color-accent));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header-inner,
+    .logo-link,
+    .site-logo {
+      transition: none;
+    }
+  }
+</style>
