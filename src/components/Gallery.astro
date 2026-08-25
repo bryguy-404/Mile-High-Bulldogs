@@ -4,35 +4,93 @@ import outdoorGroup from "../assets/photos/bulldogs-outdoor-group.jpg";
 import arenaSupporters from "../assets/photos/supporters-overlooking-ball-arena.jpg";
 import mascotAlumni from "../assets/photos/alumni-with-bulldog-mascot.jpg";
 import hockeyFans from "../assets/photos/ferris-detroit-fans-ball-arena.jpg";
+import alumniStepAndRepeat from "../assets/photos/alumni-step-and-repeat.jpg";
+import bulldogBaseballFan from "../assets/photos/bulldog-baseball-fan.jpg";
+import arenaFansAndMascot from "../assets/photos/arena-fans-and-mascot.jpg";
+import bulldogSweatshirts from "../assets/photos/bulldog-sweatshirts.jpg";
+import redWingsSupporters from "../assets/photos/red-wings-supporters.jpg";
+import alumniAtBaseballGame from "../assets/photos/alumni-at-baseball-game.jpg";
+import coloradoBaseballSupporters from "../assets/photos/colorado-baseball-supporters.jpg";
+import coloradoBannerGathering from "../assets/photos/colorado-banner-gathering.jpg";
+import bulldogShirtCityView from "../assets/photos/bulldog-shirt-city-view.jpg";
+import bulldogShirtOutdoors from "../assets/photos/bulldog-shirt-outdoors.jpg";
+import historicBulldogGathering from "../assets/photos/historic-bulldog-gathering.jpg";
 
 const tiles = [
   {
     src: outdoorGroup,
     alt: "Mile High Bulldogs supporters wearing matching shirts at an outdoor gathering",
     span: "md:col-span-7",
-    minHeight: "min-h-[22rem]",
-    objectPosition: "object-center",
+    minHeight: "md:min-h-[22rem]",
+    objectPosition: "md:object-center",
   },
   {
     src: arenaSupporters,
     alt: "Two Mile High Bulldogs supporters overlooking Ball Arena",
     span: "md:col-span-5",
-    minHeight: "min-h-[22rem]",
-    objectPosition: "object-[50%_38%]",
+    minHeight: "md:min-h-[22rem]",
+    objectPosition: "md:object-[50%_10%]",
   },
   {
     src: mascotAlumni,
     alt: "Ferris State alumni with the bulldog mascot at a Ferris State game",
     span: "md:col-span-5",
-    minHeight: "min-h-[20rem]",
-    objectPosition: "object-[50%_35%]",
+    minHeight: "md:min-h-[20rem]",
+    objectPosition: "md:object-[50%_15%]",
   },
   {
     src: hockeyFans,
     alt: "Ferris State and Detroit hockey fans together at Ball Arena",
     span: "md:col-span-7",
-    minHeight: "min-h-[20rem]",
-    objectPosition: "object-center",
+    minHeight: "md:min-h-[20rem]",
+    objectPosition: "md:object-[50%_18%]",
+  },
+];
+
+const communityPhotos = [
+  {
+    src: alumniStepAndRepeat,
+    alt: "Three Ferris State supporters standing in front of a Mile High Bulldogs backdrop",
+  },
+  {
+    src: bulldogBaseballFan,
+    alt: "Ferris State supporter holding a baseball in stadium seating",
+  },
+  {
+    src: arenaFansAndMascot,
+    alt: "Three supporters in arena seats with a mascot behind them",
+  },
+  {
+    src: bulldogSweatshirts,
+    alt: "Two supporters showing Mile High Bulldogs apparel at a gathering",
+  },
+  {
+    src: redWingsSupporters,
+    alt: "Group of Detroit hockey supporters gathered indoors",
+  },
+  {
+    src: alumniAtBaseballGame,
+    alt: "Ferris State supporters seated together at a baseball game",
+  },
+  {
+    src: coloradoBaseballSupporters,
+    alt: "Two supporters standing together at a baseball stadium",
+  },
+  {
+    src: coloradoBannerGathering,
+    alt: "Three people gathered beneath Colorado flags on a city street",
+  },
+  {
+    src: bulldogShirtCityView,
+    alt: "Supporter wearing a Ferris State Bulldogs shirt with a city view",
+  },
+  {
+    src: bulldogShirtOutdoors,
+    alt: "Supporter wearing Mile High Bulldogs apparel outdoors",
+  },
+  {
+    src: historicBulldogGathering,
+    alt: "Large group of Ferris State supporters gathered indoors",
   },
 ];
 ---
@@ -76,13 +134,40 @@ const tiles = [
               loading="lazy"
               decoding="async"
               class:list={[
-                "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]",
+                "block h-auto w-full md:absolute md:inset-0 md:h-full md:object-cover md:transition-transform md:duration-500 md:group-hover:scale-[1.02]",
                 tile.objectPosition,
               ]}
             />
           </figure>
         ))
       }
+    </div>
+
+    <div class="mt-14 border-t-2 border-accent pt-8">
+      <div class="mb-7 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <h3 class="font-heading text-3xl font-black uppercase sm:text-4xl">
+          More Bulldog Moments
+        </h3>
+        <p class="text-xs font-black uppercase tracking-[.2em] text-accent">
+          Across Colorado. Across the years.
+        </p>
+      </div>
+
+      <div class="columns-1 gap-3 sm:columns-2 lg:columns-3 xl:columns-4">
+        {
+          communityPhotos.map((photo) => (
+            <figure class="mb-3 flex break-inside-avoid justify-center overflow-hidden border-2 border-white/35 bg-foreground p-2">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                class="block h-auto w-auto max-w-full"
+              />
+            </figure>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
