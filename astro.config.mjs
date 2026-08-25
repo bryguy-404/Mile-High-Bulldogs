@@ -7,9 +7,8 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  // Used for canonical URLs and Open Graph tags. Update to the production
-  // domain before deploying to Cloudflare Pages.
-  site: 'https://milehighbulldogs.com',
+  // Used for canonical URLs and Open Graph tags.
+  site: 'https://www.milehighbulldog.com',
 
   vite: {
     plugins: [tailwindcss()]
