@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import eventPhoto from "../assets/photos/event-ball-arena-mascot.jpg";
+import eventPhoto from "../assets/photos/event-avalanche-red-wings-fans.jpg";
 import avalancheLogo from "../assets/teams/colorado-avalanche.png";
 import redWingsLogo from "../assets/teams/detroit-red-wings.svg";
 import { siteConfig } from "../lib/site.config";
@@ -28,21 +28,21 @@ const { event } = siteConfig;
       </div>
 
       <figure
-        class="relative min-h-[360px] overflow-hidden border-4 border-foreground bg-secondary"
+        class="relative aspect-[3/4] overflow-hidden border-4 border-foreground bg-secondary lg:aspect-auto lg:min-h-[360px]"
       >
         <Image
           src={eventPhoto}
-          alt="Ferris State bulldog mascot outside Ball Arena"
+          alt="Colorado Avalanche and Detroit Red Wings fans together at a Mile High Bulldogs gathering"
           widths={[480, 720, 1024]}
           sizes="(min-width: 1024px) 36vw, 100vw"
           loading="lazy"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover object-center"
+          class="absolute inset-0 h-full w-full object-cover object-[50%_30%]"
         />
         <figcaption
           class="absolute inset-x-0 bottom-0 bg-accent px-4 py-3 text-xs font-black uppercase tracking-[.18em] text-foreground"
         >
-          Bulldog Country at Ball Arena
+          Mile High Bulldogs hockey night
         </figcaption>
       </figure>
     </div>
