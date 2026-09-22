@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:cms": "node scripts/test-cms.mjs",
+    "test:browser": "node scripts/verify-homepage.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.8",
@@ -27,6 +29,7 @@
     "pixelmatch": "^7.2.0",
     "playwright": "^1.62.1",
     "pngjs": "^7.0.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.0"
   }
 }

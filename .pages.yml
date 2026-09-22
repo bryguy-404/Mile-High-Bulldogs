@@ -1,12 +1,58 @@
+# Fixed homepage sections. Keep routes, layout, and scripts outside the editor.
 media:
   input: public/uploads
   output: /uploads
-  extensions: [jpg, jpeg, png, webp, avif]
+  extensions:
+    - jpg
+    - jpeg
+    - png
+    - webp
+    - avif
   rename: random
-
 content:
+  - name: hero
+    label: 1 · Hero
+    type: file
+    path: src/content/hero.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: eyebrow
+        label: Intro label
+        type: string
+        required: true
+      - name: heading
+        label: Three-line heading
+        type: object
+        required: true
+        fields:
+          - name: line1
+            label: First line
+            type: string
+            required: true
+          - name: line2
+            label: Highlighted second line
+            type: string
+            required: true
+          - name: line3
+            label: Third line
+            type: string
+            required: true
+      - name: description
+        label: Introduction
+        type: text
+        required: true
+      - name: poster
+        label: Video poster / reduced-motion background
+        type: image
+        required: true
+        description: Shown while the video loads and when visitors prefer reduced motion. The video itself
+          stays managed in code.
   - name: featured-event
-    label: Featured Event
+    label: 2 · Featured Event
     type: file
     path: src/content/featured-event.json
     format: json
@@ -15,11 +61,57 @@ content:
       rename: false
       delete: false
     fields:
+      - name: calendarLabel
+        label: Calendar label
+        type: string
+        required: true
+      - name: eyebrow
+        label: Section label
+        type: string
+        required: true
+      - name: matchup
+        label: Matchup (screen reader heading)
+        type: string
+        required: true
+      - name: versusLabel
+        label: Text between team graphics
+        type: string
+        required: true
+      - name: teams
+        label: Team graphics
+        type: object
+        required: true
+        fields:
+          - name: home
+            label: Left team
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: away
+            label: Right team
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
       - name: description
         label: Event description
         type: text
         required: true
-
       - name: date
         label: Event date
         type: date
@@ -27,28 +119,663 @@ content:
         options:
           time: false
           format: yyyy-MM-dd
-
       - name: time
         label: Event time
         type: string
         required: true
-
+        description: Include the local time and timezone when appropriate.
       - name: venue
         label: Venue
         type: string
         required: true
-
+      - name: pregame
+        label: Pregame details
+        type: string
+        required: true
+      - name: ticketDeadline
+        label: Ticket purchase deadline
+        type: date
+        required: true
+        options:
+          time: false
+          format: yyyy-MM-dd
       - name: ticketUrl
         label: Ticket purchase link
         type: string
         required: true
-
+        description: Use a complete https:// link.
+        pattern:
+          regex: ^https?://[^\s]+$
+          message: Enter a valid link.
+      - name: flyerUrl
+        label: Event flyer link
+        type: string
+        required: true
+        description: Use an https:// URL or the existing /downloads/ PDF path.
+        pattern:
+          regex: ^(https?://[^\s]+|/downloads/[^\s]+\.pdf)$
+          message: Enter a valid link.
+      - name: flyerLabel
+        label: Flyer button text
+        type: string
+        required: true
       - name: image
         label: Event photo
         type: image
         required: true
-
       - name: imageAlt
-        label: Short description of the photo
+        label: Photo description (accessibility)
         type: string
         required: true
+      - name: imageCaption
+        label: Photo caption
+        type: string
+        required: true
+      - name: labels
+        label: Detail labels
+        type: object
+        required: true
+        fields:
+          - name: game
+            label: Game
+            type: string
+            required: true
+          - name: venue
+            label: Venue
+            type: string
+            required: true
+          - name: pregame
+            label: Pregame
+            type: string
+            required: true
+          - name: deadline
+            label: Deadline
+            type: string
+            required: true
+      - name: contact
+        label: Event contact
+        type: object
+        required: true
+        fields:
+          - name: prompt
+            label: Contact introduction
+            type: string
+            required: true
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: email
+            label: Email
+            type: string
+            required: true
+            pattern:
+              regex: ^[^\s@]+@[^\s@]+\.[^\s@]+$
+              message: Enter an email address.
+          - name: phone
+            label: Phone number
+            type: string
+            required: true
+            description: Include a country code for numbers outside the US. The tap-to-call link is generated
+              automatically.
+  - name: why-we-exist
+    label: 3 · Why We Exist
+    type: file
+    path: src/content/why-we-exist.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: eyebrow
+        label: Section label
+        type: string
+        required: true
+      - name: title
+        label: Heading
+        type: string
+        required: true
+      - name: copy
+        label: Text in page order
+        type: object
+        required: true
+        description: Each field stays in its existing position. The closing tagline is edited under Shared
+          Information.
+        fields:
+          - name: graduation
+            label: Graduation
+            type: text
+            required: true
+          - name: connection
+            label: Connection
+            type: text
+            required: true
+          - name: purpose
+            label: Purpose
+            type: text
+            required: true
+          - name: mission
+            label: Mission
+            type: text
+            required: true
+          - name: calloutIntro
+            label: Callout Intro
+            type: text
+            required: true
+          - name: callout
+            label: Callout
+            type: text
+            required: true
+          - name: events
+            label: Events
+            type: text
+            required: true
+          - name: eventsEmphasis
+            label: Events Emphasis
+            type: text
+            required: true
+          - name: community
+            label: Community
+            type: text
+            required: true
+          - name: belongingIntro
+            label: Belonging Intro
+            type: text
+            required: true
+          - name: belonging
+            label: Belonging
+            type: text
+            required: true
+          - name: graduationCard
+            label: Graduation Card
+            type: text
+            required: true
+          - name: studiesCard
+            label: Studies Card
+            type: text
+            required: true
+          - name: coloradoCard
+            label: Colorado Card
+            type: text
+            required: true
+          - name: welcomeCard
+            label: Welcome Card
+            type: text
+            required: true
+          - name: invitation
+            label: Invitation
+            type: text
+            required: true
+          - name: closingLead
+            label: Closing Lead
+            type: text
+            required: true
+          - name: closingEmphasis
+            label: Closing Emphasis
+            type: text
+            required: true
+  - name: origin-story
+    label: 4 · Origin Story
+    type: file
+    path: src/content/origin-story.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: eyebrow
+        label: Section label
+        type: string
+        required: true
+      - name: title
+        label: Heading
+        type: string
+        required: true
+      - name: copy
+        label: Text in page order
+        type: object
+        required: true
+        description: Each field stays in its existing position. The closing tagline is edited under Shared
+          Information.
+        fields:
+          - name: intro
+            label: Intro
+            type: text
+            required: true
+          - name: background
+            label: Background
+            type: text
+            required: true
+          - name: ideaIntro
+            label: Idea Intro
+            type: text
+            required: true
+          - name: idea
+            label: Idea
+            type: text
+            required: true
+          - name: invitation
+            label: Invitation
+            type: text
+            required: true
+          - name: questionIntro
+            label: Question Intro
+            type: text
+            required: true
+          - name: question
+            label: Question
+            type: text
+            required: true
+          - name: answer
+            label: Answer
+            type: text
+            required: true
+          - name: turnout
+            label: Turnout
+            type: text
+            required: true
+          - name: beginning
+            label: Beginning
+            type: text
+            required: true
+          - name: birth
+            label: Birth
+            type: text
+            required: true
+          - name: continuation
+            label: Continuation
+            type: text
+            required: true
+          - name: closingIntro
+            label: Closing Intro
+            type: text
+            required: true
+          - name: closing
+            label: Closing
+            type: text
+            required: true
+  - name: gallery
+    label: 5 · Gallery
+    type: file
+    path: src/content/gallery.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: eyebrow
+        label: Section label
+        type: string
+        required: true
+      - name: title
+        label: Heading
+        type: string
+        required: true
+      - name: description
+        label: Introduction
+        type: text
+        required: true
+      - name: featured
+        label: Four featured photos
+        type: object
+        required: true
+        fields:
+          - name: photo1
+            label: Photo 1
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo2
+            label: Photo 2
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo3
+            label: Photo 3
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo4
+            label: Photo 4
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+      - name: moreTitle
+        label: More moments heading
+        type: string
+        required: true
+      - name: moreSubtitle
+        label: More moments subtitle
+        type: string
+        required: true
+      - name: moments
+        label: Eleven community photos
+        type: object
+        required: true
+        fields:
+          - name: photo1
+            label: Photo 1
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo2
+            label: Photo 2
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo3
+            label: Photo 3
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo4
+            label: Photo 4
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo5
+            label: Photo 5
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo6
+            label: Photo 6
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo7
+            label: Photo 7
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo8
+            label: Photo 8
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo9
+            label: Photo 9
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo10
+            label: Photo 10
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+          - name: photo11
+            label: Photo 11
+            type: object
+            required: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+                required: true
+              - name: imageAlt
+                label: Photo description (accessibility)
+                type: string
+                required: true
+  - name: social
+    label: 6 · Social
+    type: file
+    path: src/content/social.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: eyebrow
+        label: Section label
+        type: string
+        required: true
+      - name: title
+        label: Heading
+        type: string
+        required: true
+      - name: description
+        label: Invitation
+        type: text
+        required: true
+  - name: shared
+    label: 7 · Shared Information
+    type: file
+    path: src/content/shared.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: name
+        label: Organization name
+        type: string
+        required: true
+      - name: tagline
+        label: Shared tagline
+        type: string
+        required: true
+        description: Updates the date banner, both story sections, and footer.
+      - name: facebookUrl
+        label: Facebook group link
+        type: string
+        required: true
+        description: Use a complete https:// link.
+        pattern:
+          regex: ^https?://[^\s]+$
+          message: Enter a valid link.
+      - name: instagramUrl
+        label: Instagram link
+        type: string
+        required: true
+        description: Use a complete https:// link.
+        pattern:
+          regex: ^https?://[^\s]+$
+          message: Enter a valid link.
+      - name: ticketLabel
+        label: Ticket button text
+        type: string
+        required: true
+        description: Updates all ticket buttons. Set the destination under Featured Event.
+      - name: groupLabel
+        label: Join group button text
+        type: string
+        required: true
+      - name: swagLabel
+        label: Swag button text
+        type: string
+        required: true
+      - name: swagStatus
+        label: Swag availability text
+        type: string
+        required: true
+      - name: swagNotice
+        label: Swag button explanation
+        type: string
+        required: true
+        description: The swag button remains disabled until a developer enables the shop.
+      - name: navigation
+        label: Navigation links
+        type: object
+        required: true
+        fields:
+          - name: events
+            label: Events
+            type: object
+            required: true
+            fields:
+              - name: label
+                label: Link text
+                type: string
+                required: true
+              - name: href
+                label: Destination
+                type: string
+                required: true
+                description: An existing homepage section or a complete https:// link.
+                pattern:
+                  regex: ^(#(top|event|story|origin|gallery|social)|https?://[^\s]+)$
+                  message: Choose an existing section anchor or an https:// URL.
+          - name: story
+            label: Story
+            type: object
+            required: true
+            fields:
+              - name: label
+                label: Link text
+                type: string
+                required: true
+              - name: href
+                label: Destination
+                type: string
+                required: true
+                description: An existing homepage section or a complete https:// link.
+                pattern:
+                  regex: ^(#(top|event|story|origin|gallery|social)|https?://[^\s]+)$
+                  message: Choose an existing section anchor or an https:// URL.
+          - name: gallery
+            label: Gallery
+            type: object
+            required: true
+            fields:
+              - name: label
+                label: Link text
+                type: string
+                required: true
+              - name: href
+                label: Destination
+                type: string
+                required: true
+                description: An existing homepage section or a complete https:// link.
+                pattern:
+                  regex: ^(#(top|event|story|origin|gallery|social)|https?://[^\s]+)$
+                  message: Choose an existing section anchor or an https:// URL.
+      - name: seo
+        label: Search and sharing text
+        type: object
+        required: true
+        fields:
+          - name: title
+            label: Page title
+            type: string
+            required: true
+          - name: description
+            label: Page description
+            type: text
+            required: true

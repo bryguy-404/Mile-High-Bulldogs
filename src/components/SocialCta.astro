@@ -1,4 +1,5 @@
 ---
+import { socialContent } from "../lib/homepage-content";
 import { siteConfig } from "../lib/site.config";
 ---
 
@@ -8,14 +9,13 @@ import { siteConfig } from "../lib/site.config";
   >
     <div>
       <p class="text-xs font-bold uppercase tracking-[.25em] text-accent">
-        Keep the rally going
+        {socialContent.eyebrow}
       </p>
       <h2 class="mt-2 font-heading text-5xl font-black uppercase sm:text-6xl">
-        Find your Bulldogs.
+        {socialContent.title}
       </h2>
       <p class="mt-3 max-w-xl text-sm leading-relaxed text-white/72">
-        Follow the next gathering, reconnect with Ferris friends, and welcome
-        another Bulldog into the Colorado community.
+        {socialContent.description}
       </p>
     </div>
 
@@ -24,7 +24,7 @@ import { siteConfig } from "../lib/site.config";
         href={siteConfig.facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Join the Mile High Bulldogs Facebook group"
+        aria-label={`Join the ${siteConfig.name} Facebook group`}
         title="Facebook group"
         class="grid h-16 w-16 place-items-center bg-white text-secondary transition-transform hover:-translate-y-1"
       >
@@ -36,7 +36,7 @@ import { siteConfig } from "../lib/site.config";
         href={siteConfig.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Follow the Mile High Bulldogs on Instagram"
+        aria-label={`Follow the ${siteConfig.name} on Instagram`}
         title="Instagram"
         class="grid h-16 w-16 place-items-center border-2 border-white text-white transition-transform hover:-translate-y-1 hover:bg-white hover:text-primary"
       >
@@ -52,7 +52,7 @@ import { siteConfig } from "../lib/site.config";
         rel="noopener noreferrer"
         class="bg-accent px-6 py-4 text-center text-sm font-black uppercase tracking-wider text-foreground"
       >
-        Get Tickets
+        {siteConfig.ticketLabel}
       </a>
     </div>
   </div>

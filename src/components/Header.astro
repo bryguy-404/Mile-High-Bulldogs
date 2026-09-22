@@ -3,17 +3,7 @@ import { Image } from "astro:assets";
 import logo from "../assets/brand/mile-high-bulldogs.svg";
 import { siteConfig } from "../lib/site.config";
 
-const navLinks = [
-  { href: "#event", label: "Events" },
-  { href: "#story", label: "Our Story" },
-  { href: "#gallery", label: "Gallery" },
-];
-
-const mobileLinks = [
-  { href: "#event", label: "Events", external: false },
-  { href: "#story", label: "Our Story", external: false },
-  { href: "#gallery", label: "Gallery", external: false },
-];
+const navLinks = Object.values(siteConfig.navigation);
 ---
 
 <header
@@ -26,11 +16,11 @@ const mobileLinks = [
     <a
       href="#top"
       class="logo-link flex shrink-0 items-center"
-      aria-label="Mile High Bulldogs home"
+      aria-label={`${siteConfig.name} home`}
     >
       <Image
         src={logo}
-        alt="Mile High Bulldogs logo"
+        alt={`${siteConfig.name} logo`}
         width="200"
         height="136"
         loading="eager"
@@ -56,15 +46,15 @@ const mobileLinks = [
         rel="noopener noreferrer"
         class="bg-primary px-5 py-3 text-white hover:bg-secondary"
       >
-        Get Tickets
+        {siteConfig.ticketLabel}
       </a>
       <button
         type="button"
         disabled
         class="cursor-not-allowed border-2 border-foreground/35 px-4 py-[10px] text-center text-foreground/50"
-        title="The Mile High Bulldogs swag shop is coming soon"
+        title={siteConfig.swagNotice}
       >
-        Get Swag <span aria-hidden="true">—</span> Coming Soon
+        {siteConfig.swagLabel} <span aria-hidden="true">—</span> {siteConfig.swagStatus}
       </button>
     </nav>
 
@@ -91,7 +81,7 @@ const mobileLinks = [
   >
     <div class="grid gap-3 font-extrabold uppercase tracking-wider">
       {
-        mobileLinks.map((link) => (
+        navLinks.map((link) => (
           <a href={link.href}>{link.label}</a>
         ))
       }
@@ -100,7 +90,7 @@ const mobileLinks = [
           href={siteConfig.facebookUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Mile High Bulldogs Facebook group"
+          aria-label={`${siteConfig.name} Facebook group`}
           title="Facebook group"
           class="grid h-11 w-11 place-items-center border-2 border-foreground bg-white"
         >
@@ -112,7 +102,7 @@ const mobileLinks = [
           href={siteConfig.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Mile High Bulldogs on Instagram"
+          aria-label={`${siteConfig.name} on Instagram`}
           title="Instagram"
           class="grid h-11 w-11 place-items-center border-2 border-foreground bg-white"
         >
@@ -127,7 +117,7 @@ const mobileLinks = [
           disabled
           class="ml-auto cursor-not-allowed border-2 border-foreground/35 px-3 py-2 text-[10px] text-foreground/55"
         >
-          Get Swag — Coming Soon
+          {siteConfig.swagLabel} — {siteConfig.swagStatus}
         </button>
       </div>
     </div>

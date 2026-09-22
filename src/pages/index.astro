@@ -1,4 +1,5 @@
 ---
+import { sharedContent } from "../lib/homepage-content";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
@@ -12,8 +13,8 @@ import MobileTicketBar from "../components/MobileTicketBar.astro";
 ---
 
 <Layout
-  title="Mile High Bulldogs | Ferris State Alumni in Colorado"
-  description="Mile High Bulldogs brings Ferris State alumni, families, and fans together in Colorado—more than 1,200 miles from Big Rapids and still Bulldog Country."
+  title={sharedContent.seo.title}
+  description={sharedContent.seo.description}
 >
   <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
 

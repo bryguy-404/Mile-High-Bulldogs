@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { sharedContent } from "../lib/homepage-content";
 
 interface Props {
   title: string;
@@ -38,7 +39,7 @@ const socialImageURL = new URL(image, "https://mile-high-bulldogs.pages.dev");
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Mile High Bulldogs" />
+    <meta property="og:site_name" content={sharedContent.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
@@ -49,7 +50,7 @@ const socialImageURL = new URL(image, "https://mile-high-bulldogs.pages.dev");
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Mile High Bulldogs logo"
+      content={`${sharedContent.name} logo`}
     />
     <meta property="og:locale" content="en_US" />
 
@@ -58,7 +59,7 @@ const socialImageURL = new URL(image, "https://mile-high-bulldogs.pages.dev");
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
-    <meta name="twitter:image:alt" content="Mile High Bulldogs logo" />
+    <meta name="twitter:image:alt" content={`${sharedContent.name} logo`} />
 
     <!-- Fonts: Barlow Condensed (display) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

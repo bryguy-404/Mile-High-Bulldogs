@@ -1,63 +1,42 @@
-# Astro Starter Kit: Minimal
+# Mile High Bulldogs
 
-## Pages CMS pilot
+Astro homepage for Ferris State alumni in Colorado, hosted on Cloudflare Pages.
 
-The `codex/pages-cms-test` branch contains the featured-event editing pilot.
-Open this repository and branch in Pages CMS, then select **Featured Event**.
+## Pages CMS
 
-- `.pages.yml` defines the editable fields and blocks creating, renaming, or deleting the content file.
-- `src/content/featured-event.json` stores the description, date, time, venue, ticket link, photo, and photo description.
-- Photos upload to `public/uploads/` and are served at `/uploads/`. For this pilot they are served as uploaded; use reasonably sized web images.
-- Date edits update the event card, event details, and mobile ticket bar. Ticket-link edits update all ticket buttons.
-- The matchup, team logos, pregame information, ticket deadline, flyer, and contact details remain outside this pilot's editor.
+The homepage uses seven fixed section editors in `.pages.yml`, with content in
+`src/content/*.json` and image uploads in `public/uploads/` (public URLs:
+`/uploads/`). The integration extends the existing Featured Event pilot.
 
-Saving in Pages CMS commits to the selected branch. Cloudflare Pages must have
-preview deployments enabled for this branch to update its preview. Saving on
-the production branch publishes to the live website after a successful build.
-Use the test branch for the pilot; do not merge until the preview is approved.
+**Current review branch:** `codex/pages-cms-test`
+**Preview:** https://codex-pages-cms-test.mile-high-bulldogs.pages.dev/
+**Editor:** https://app.pagescms.org/
 
-Validation: `npm run astro -- check` and `npm run build`.
-Invalid dates, empty required fields, invalid ticket links, or missing photos
-fail the build. To undo an edit, revert its Git commit on the same branch.
+See [the client editing and setup guide](docs/pages-cms.md) for the complete
+editable-field inventory, account steps, publishing behavior, and recovery.
+The production branch is `main`. Do not merge the review branch or edit `main`
+in Pages CMS until the owner approves production launch.
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## Development
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Requires Node.js 22.12 or newer. Install locked dependencies with `npm ci`.
 
-## 🚀 Project Structure
+| Command | Purpose |
+| --- | --- |
+| `npm run dev -- --background` | Start the background Astro development server |
+| `npm run astro -- dev status` | Show the server URL and status |
+| `npm run astro -- dev logs` | Read server logs |
+| `npm run astro -- dev stop` | Stop the background server |
+| `npm run astro -- check` | Astro and TypeScript diagnostics |
+| `npm run build` | Validate content and build `dist/` |
+| `npm run test:cms` | Exercise every CMS field and invalid-content build failures |
+| `npm run test:browser` | Check the built page on desktop, mobile, and tablet |
+| `npm run test:browser -- https://codex-pages-cms-test.mile-high-bulldogs.pages.dev/` | Check the deployed preview |
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Run `test:cms` in an isolated checkout, with no concurrent editor changes: it
+makes temporary content edits and restores them in `finally`. It finishes with
+a clean production build. The browser check uses Playwright Chromium
+(`npx playwright install chromium`), or a Chrome executable supplied through
+`CHROME_PATH`. Screenshots go to ignored `.loop/cms-verification/`.
+An optional `CMS_BASELINE_DIR` points to a previously built approved site for
+section-geometry and screenshot comparison. `visual-diff.mjs` remains unchanged.

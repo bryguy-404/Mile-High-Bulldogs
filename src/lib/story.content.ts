@@ -1,47 +1,95 @@
-export const originStory = {
-  eyebrow: "ORIGIN STORY:",
-  title: "It Started with a Hockey Game — and 140 Bulldogs",
-  paragraphs: [
-    "In December 1999, Ferris State University hockey was headed west.",
-    "The Bulldogs were coming to Colorado to compete in a Holiday Classic against the University of Denver, Boston University, and Air Force. For Ferris alumni living more than 1,200 miles from Big Rapids, it was a rare opportunity to see the Bulldogs play close to home.",
-    "One Ferris State alumnus had an idea:",
-    "What if we could get all the Bulldogs in Colorado together?",
-    "So, he rented the President’s Box at the University of Denver and started inviting every Ferris State alumnus he could find in the Mile High City.",
-    "There was only one question:",
-    "Would anybody actually show up?",
-    "They did.",
-    "More than 140 Ferris State alumni and friends came together that night.",
-    "What started as an invitation to watch a hockey game became something much bigger. It was the beginning of a Colorado community built around a shared connection to Ferris State — and the first of many events designed to bring Bulldogs together far from Big Rapids.",
-    "The Mile High Bulldogs were born.",
-    "Since December 1999, we’ve continued bringing Ferris State alumni together throughout Colorado to reconnect with old friends, meet new Bulldogs, celebrate our university, and have a whole lot of fun along the way.",
-    "More than 25 years later, the idea remains pretty simple:",
-    "You may be a long way from Big Rapids, but you’re never far from your fellow Bulldogs.",
-    "Once a Bulldog. Always a Bulldog. Even at a Mile High.",
-  ],
-} as const;
+import { z } from "astro/zod";
+import { text } from "./content-validation";
+import { sharedContent } from "./homepage-content";
+import originStoryData from "../content/origin-story.json";
+import whyWeExistData from "../content/why-we-exist.json";
 
-export const whyWeExist = {
-  eyebrow: "Why We Exist",
-  title: "1,200 Miles From Big Rapids. Still Bulldog Country.",
+const originStoryContent = z.object({
+  eyebrow: text,
+  title: text,
+  copy: z.object({
+    intro: text,
+    background: text,
+    ideaIntro: text,
+    idea: text,
+    invitation: text,
+    questionIntro: text,
+    question: text,
+    answer: text,
+    turnout: text,
+    beginning: text,
+    birth: text,
+    continuation: text,
+    closingIntro: text,
+    closing: text
+  }),
+}).parse(originStoryData);
+export const originStory = {
+  ...originStoryContent,
   paragraphs: [
-    "Graduation may take us away from Ferris State. Careers, families and life may take us all the way to Colorado.",
-    "But being a Bulldog doesn't end when you leave Big Rapids.",
-    "That's why the Mile High Bulldogs exist.",
-    "We're here to bring Ferris State alumni from across Colorado together — to reconnect with old friends, make new ones, build relationships, grow our professional networks and keep that Bulldog spirit alive more than 1,200 miles from campus.",
-    "And we believe the best way to stay connected is pretty simple:",
-    "Get Bulldogs together and have a great time.",
-    "Over the years, that has meant Red Wings vs. Avalanche parties, Lions vs. Broncos tailgates, Tigers vs. Rockies rooftop parties at Coors Field, golf tournaments, Ferris State championship watch parties and plenty of other excuses to put on the Crimson and Gold and get together.",
-    "But the events are really just the beginning.",
-    "A Bulldog who graduated in the 1970s might find themselves sharing a beer with a Bulldog who graduated last year. Someone new to Colorado can walk into an event knowing almost no one and leave having met dozens of people with something immediately in common. Business connections become friendships. Different generations of alumni meet each other. And suddenly, Colorado feels a little more like home.",
-    "That's what the Mile High Bulldogs are really about.",
-    "We're creating a place where every Ferris State alum in Colorado can walk through the door and immediately belong.",
-    "No matter when you graduated.",
-    "No matter what you studied.",
-    "No matter how long you've lived in Colorado.",
-    "If you're a Bulldog, you're one of us.",
-    "So dig out the Ferris gear. Bring your spouse, your family or another Bulldog. Come to an event. Meet someone you didn't know before.",
-    "Because Big Rapids may be a long way from the Rocky Mountains...",
-    "but Bulldog Country is wherever Bulldogs come together.",
-    "Once a Bulldog. Always a Bulldog. Even at a Mile High.",
+    originStoryContent.copy.intro,
+    originStoryContent.copy.background,
+    originStoryContent.copy.ideaIntro,
+    originStoryContent.copy.idea,
+    originStoryContent.copy.invitation,
+    originStoryContent.copy.questionIntro,
+    originStoryContent.copy.question,
+    originStoryContent.copy.answer,
+    originStoryContent.copy.turnout,
+    originStoryContent.copy.beginning,
+    originStoryContent.copy.birth,
+    originStoryContent.copy.continuation,
+    originStoryContent.copy.closingIntro,
+    originStoryContent.copy.closing,
+    sharedContent.tagline
   ],
-} as const;
+};
+
+const whyWeExistContent = z.object({
+  eyebrow: text,
+  title: text,
+  copy: z.object({
+    graduation: text,
+    connection: text,
+    purpose: text,
+    mission: text,
+    calloutIntro: text,
+    callout: text,
+    events: text,
+    eventsEmphasis: text,
+    community: text,
+    belongingIntro: text,
+    belonging: text,
+    graduationCard: text,
+    studiesCard: text,
+    coloradoCard: text,
+    welcomeCard: text,
+    invitation: text,
+    closingLead: text,
+    closingEmphasis: text
+  }),
+}).parse(whyWeExistData);
+export const whyWeExist = {
+  ...whyWeExistContent,
+  paragraphs: [
+    whyWeExistContent.copy.graduation,
+    whyWeExistContent.copy.connection,
+    whyWeExistContent.copy.purpose,
+    whyWeExistContent.copy.mission,
+    whyWeExistContent.copy.calloutIntro,
+    whyWeExistContent.copy.callout,
+    whyWeExistContent.copy.events,
+    whyWeExistContent.copy.eventsEmphasis,
+    whyWeExistContent.copy.community,
+    whyWeExistContent.copy.belongingIntro,
+    whyWeExistContent.copy.belonging,
+    whyWeExistContent.copy.graduationCard,
+    whyWeExistContent.copy.studiesCard,
+    whyWeExistContent.copy.coloradoCard,
+    whyWeExistContent.copy.welcomeCard,
+    whyWeExistContent.copy.invitation,
+    whyWeExistContent.copy.closingLead,
+    whyWeExistContent.copy.closingEmphasis,
+    sharedContent.tagline
+  ],
+};

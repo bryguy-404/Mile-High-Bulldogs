@@ -1,0 +1,71 @@
+{
+  "eyebrow": "Real Bulldogs. Real Colorado.",
+  "title": "The Bulldog Roll",
+  "description": "From game days to Colorado gatherings, the Mile High Bulldogs keep Ferris connections strong well beyond Big Rapids.",
+  "moreTitle": "More Bulldog Moments",
+  "moreSubtitle": "Across Colorado. Across the years.",
+  "featured": {
+    "photo1": {
+      "image": "/uploads/bulldogs-outdoor-group.jpg",
+      "imageAlt": "Mile High Bulldogs supporters wearing matching shirts at an outdoor gathering"
+    },
+    "photo2": {
+      "image": "/uploads/supporters-overlooking-ball-arena.jpg",
+      "imageAlt": "Two Mile High Bulldogs supporters overlooking Ball Arena"
+    },
+    "photo3": {
+      "image": "/uploads/alumni-with-bulldog-mascot.jpg",
+      "imageAlt": "Ferris State alumni with the bulldog mascot at a Ferris State game"
+    },
+    "photo4": {
+      "image": "/uploads/ferris-detroit-fans-ball-arena.jpg",
+      "imageAlt": "Ferris State and Detroit hockey fans together at Ball Arena"
+    }
+  },
+  "moments": {
+    "photo1": {
+      "image": "/uploads/alumni-step-and-repeat.jpg",
+      "imageAlt": "Three Ferris State supporters standing in front of a Mile High Bulldogs backdrop"
+    },
+    "photo2": {
+      "image": "/uploads/bulldog-baseball-fan.jpg",
+      "imageAlt": "Ferris State supporter holding a baseball in stadium seating"
+    },
+    "photo3": {
+      "image": "/uploads/arena-fans-and-mascot.jpg",
+      "imageAlt": "Three supporters in arena seats with a mascot behind them"
+    },
+    "photo4": {
+      "image": "/uploads/bulldog-sweatshirts.jpg",
+      "imageAlt": "Two supporters showing Mile High Bulldogs apparel at a gathering"
+    },
+    "photo5": {
+      "image": "/uploads/red-wings-supporters.jpg",
+      "imageAlt": "Group of Detroit hockey supporters gathered indoors"
+    },
+    "photo6": {
+      "image": "/uploads/alumni-at-baseball-game.jpg",
+      "imageAlt": "Ferris State supporters seated together at a baseball game"
+    },
+    "photo7": {
+      "image": "/uploads/colorado-baseball-supporters.jpg",
+      "imageAlt": "Two supporters standing together at a baseball stadium"
+    },
+    "photo8": {
+      "image": "/uploads/colorado-banner-gathering.jpg",
+      "imageAlt": "Three people gathered beneath Colorado flags on a city street"
+    },
+    "photo9": {
+      "image": "/uploads/bulldog-shirt-city-view.jpg",
+      "imageAlt": "Supporter wearing a Ferris State Bulldogs shirt with a city view"
+    },
+    "photo10": {
+      "image": "/uploads/bulldog-shirt-outdoors.jpg",
+      "imageAlt": "Supporter wearing Mile High Bulldogs apparel outdoors"
+    },
+    "photo11": {
+      "image": "/uploads/historic-bulldog-gathering.jpg",
+      "imageAlt": "Large group of Ferris State supporters gathered indoors"
+    }
+  }
+}

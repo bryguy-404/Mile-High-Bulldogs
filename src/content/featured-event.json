@@ -1,9 +1,40 @@
 {
-  "description": "Join Ferris State alumni and friends for a night of hockey at Ball Arena. Purchase discounted alumni tickets by October 1 so the Mile High Bulldogs can show up and sit together. See you at the game!",
+  "description": "Join Ferris State alumni and friends for a night of hockey at Ball Arena. Purchase discounted alumni tickets by October 1 so the Mile High Bulldogs can show up and sit together.",
   "date": "2026-11-07",
   "time": "7:00 PM",
   "venue": "Ball Arena",
   "ticketUrl": "https://avalanche.spinzo.com/colorado-avalanche-vs-detroit-red-wings-2026-11-07-UADWX?group=ferris-state-98gh",
-  "image": "/uploads/mud13q7t-ndin9lpb.png",
-  "imageAlt": "Colorado Avalanche and Detroit Red Wings fans together at a Mile High Bulldogs gathering"
+  "image": "/uploads/event-avalanche-red-wings-fans.jpg",
+  "imageAlt": "Colorado Avalanche and Detroit Red Wings fans together at a Mile High Bulldogs gathering",
+  "calendarLabel": "Next on the calendar",
+  "eyebrow": "Mile High Bulldogs featured event",
+  "matchup": "Colorado Avalanche versus Detroit Red Wings",
+  "versusLabel": "vs.",
+  "imageCaption": "Mile High Bulldogs hockey night",
+  "pregame": "Pregame happy hour at 5:30 PM",
+  "ticketDeadline": "2026-10-01",
+  "flyerUrl": "/downloads/ferris-state-alumni-night.pdf",
+  "flyerLabel": "View Event Flyer",
+  "labels": {
+    "game": "Game",
+    "venue": "Venue",
+    "pregame": "Before the game",
+    "deadline": "Ticket deadline"
+  },
+  "contact": {
+    "prompt": "Questions or group seating for eight or more?",
+    "name": "Aron Gonzales",
+    "email": "Aron.Gonzales@TeamKSE.com",
+    "phone": "720.201.9719"
+  },
+  "teams": {
+    "home": {
+      "image": "/uploads/colorado-avalanche.png",
+      "imageAlt": "Colorado Avalanche"
+    },
+    "away": {
+      "image": "/uploads/detroit-red-wings.png",
+      "imageAlt": "Detroit Red Wings"
+    }
+  }
 }

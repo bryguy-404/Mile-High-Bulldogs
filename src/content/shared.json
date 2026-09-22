@@ -1,0 +1,29 @@
+{
+  "name": "Mile High Bulldogs",
+  "tagline": "Once a Bulldog. Always a Bulldog. Even at a Mile High.",
+  "facebookUrl": "https://www.facebook.com/groups/138344642935",
+  "instagramUrl": "https://www.instagram.com/ferrisstatemilehighbulldogs/",
+  "ticketLabel": "Get Tickets",
+  "groupLabel": "Join the Group",
+  "swagLabel": "Get Swag",
+  "swagStatus": "Coming Soon",
+  "swagNotice": "The Mile High Bulldogs swag shop is coming soon",
+  "navigation": {
+    "events": {
+      "label": "Events",
+      "href": "#event"
+    },
+    "story": {
+      "label": "Our Story",
+      "href": "#story"
+    },
+    "gallery": {
+      "label": "Gallery",
+      "href": "#gallery"
+    }
+  },
+  "seo": {
+    "title": "Mile High Bulldogs | Ferris State Alumni in Colorado",
+    "description": "Mile High Bulldogs brings Ferris State alumni, families, and fans together in Colorado—more than 1,200 miles from Big Rapids and still Bulldog Country."
+  }
+}
