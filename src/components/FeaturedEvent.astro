@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import eventPhoto from "../assets/photos/event-avalanche-red-wings-fans.jpg";
 import avalancheLogo from "../assets/teams/colorado-avalanche.png";
 import redWingsLogo from "../assets/teams/detroit-red-wings.svg";
 import { siteConfig } from "../lib/site.config";
@@ -22,19 +21,19 @@ const { event } = siteConfig;
         <p
           class="mt-5 font-heading text-8xl font-black uppercase leading-[.72] text-secondary sm:text-9xl lg:text-[8.5rem]"
         >
-          <span class="block">NOV 7</span>
-          <span class="mt-6 block text-primary">2026</span>
+          <span class="block">{event.dateBadge}</span>
+          <span class="mt-6 block text-primary">{event.year}</span>
         </p>
       </div>
 
       <figure
         class="relative aspect-[3/4] overflow-hidden border-4 border-foreground bg-secondary lg:aspect-auto lg:min-h-[360px]"
       >
-        <Image
-          src={eventPhoto}
-          alt="Colorado Avalanche and Detroit Red Wings fans together at a Mile High Bulldogs gathering"
-          widths={[480, 720, 1024]}
-          sizes="(min-width: 1024px) 36vw, 100vw"
+        <img
+          src={event.image}
+          alt={event.imageAlt}
+          width="1104"
+          height="1472"
           loading="lazy"
           decoding="async"
           class="absolute inset-0 h-full w-full object-cover object-[50%_30%]"
@@ -83,9 +82,7 @@ const { event } = siteConfig;
         </span>
       </h2>
       <p class="mt-5 max-w-2xl text-base leading-relaxed text-white/72">
-        Join Ferris State alumni and friends for a night of hockey at Ball
-        Arena. Purchase discounted alumni tickets by October 1 so the Mile High
-        Bulldogs can show up and sit together.
+        {event.description}
       </p>
 
       <dl class="mt-8 grid gap-px bg-white/15 sm:grid-cols-2">

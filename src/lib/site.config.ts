@@ -1,3 +1,5 @@
+import { featuredEventContent, featuredEventDate } from "./featured-event";
+
 export interface EventContact {
   name: string;
   email: string;
@@ -7,10 +9,15 @@ export interface EventContact {
 
 export interface FeaturedEvent {
   matchup: string;
+  description: string;
   date: string;
   dateShort: string;
+  dateBadge: string;
+  year: string;
   time: string;
   venue: string;
+  image: string;
+  imageAlt: string;
   pregame: string;
   ticketDeadline: string;
   contact: EventContact;
@@ -32,8 +39,7 @@ export interface SiteConfig {
 export const siteConfig = {
   name: "Mile High Bulldogs",
   tagline: "Once a Bulldog. Always a Bulldog. Even at a Mile High.",
-  ticketUrl:
-    "https://avalanche.spinzo.com/colorado-avalanche-vs-detroit-red-wings-2026-11-07-UADWX?group=ferris-state-98gh",
+  ticketUrl: featuredEventContent.ticketUrl,
   facebookUrl: "https://www.facebook.com/groups/138344642935",
   instagramUrl: "https://www.instagram.com/ferrisstatemilehighbulldogs/",
   flyerUrl: "/downloads/ferris-state-alumni-night.pdf",
@@ -42,10 +48,15 @@ export const siteConfig = {
   reelPosterUrl: "/media/mile-high-bulldogs-hype-reel-poster.jpg",
   event: {
     matchup: "Colorado Avalanche vs. Detroit Red Wings",
-    date: "Saturday, November 7, 2026",
-    dateShort: "Nov 7, 2026",
-    time: "7:00 PM",
-    venue: "Ball Arena",
+    description: featuredEventContent.description,
+    date: featuredEventDate.full,
+    dateShort: featuredEventDate.short,
+    dateBadge: featuredEventDate.badge,
+    year: featuredEventDate.year,
+    time: featuredEventContent.time,
+    venue: featuredEventContent.venue,
+    image: featuredEventContent.image,
+    imageAlt: featuredEventContent.imageAlt,
     pregame: "Pregame happy hour at 5:30 PM",
     ticketDeadline: "October 1, 2026",
     contact: {

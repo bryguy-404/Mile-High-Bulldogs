@@ -1,5 +1,25 @@
 # Astro Starter Kit: Minimal
 
+## Pages CMS pilot
+
+The `codex/pages-cms-test` branch contains the featured-event editing pilot.
+Open this repository and branch in Pages CMS, then select **Featured Event**.
+
+- `.pages.yml` defines the editable fields and blocks creating, renaming, or deleting the content file.
+- `src/content/featured-event.json` stores the description, date, time, venue, ticket link, photo, and photo description.
+- Photos upload to `public/uploads/` and are served at `/uploads/`. For this pilot they are served as uploaded; use reasonably sized web images.
+- Date edits update the event card, event details, and mobile ticket bar. Ticket-link edits update all ticket buttons.
+- The matchup, team logos, pregame information, ticket deadline, flyer, and contact details remain outside this pilot's editor.
+
+Saving in Pages CMS commits to the selected branch. Cloudflare Pages must have
+preview deployments enabled for this branch to update its preview. Saving on
+the production branch publishes to the live website after a successful build.
+Use the test branch for the pilot; do not merge until the preview is approved.
+
+Validation: `npm run astro -- check` and `npm run build`.
+Invalid dates, empty required fields, invalid ticket links, or missing photos
+fail the build. To undo an edit, revert its Git commit on the same branch.
+
 ```sh
 npm create astro@latest -- --template minimal
 ```

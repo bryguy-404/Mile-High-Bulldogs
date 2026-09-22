@@ -1,6 +1,8 @@
 media:
   input: public/uploads
   output: /uploads
+  extensions: [jpg, jpeg, png, webp, avif]
+  rename: random
 
 content:
   - name: featured-event
@@ -22,6 +24,9 @@ content:
         label: Event date
         type: date
         required: true
+        options:
+          time: false
+          format: yyyy-MM-dd
 
       - name: time
         label: Event time
