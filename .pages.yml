@@ -1,0 +1,49 @@
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: featured-event
+    label: Featured Event
+    type: file
+    path: src/content/featured-event.json
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    fields:
+      - name: description
+        label: Event description
+        type: text
+        required: true
+
+      - name: date
+        label: Event date
+        type: date
+        required: true
+
+      - name: time
+        label: Event time
+        type: string
+        required: true
+
+      - name: venue
+        label: Venue
+        type: string
+        required: true
+
+      - name: ticketUrl
+        label: Ticket purchase link
+        type: string
+        required: true
+
+      - name: image
+        label: Event photo
+        type: image
+        required: true
+
+      - name: imageAlt
+        label: Short description of the photo
+        type: string
+        required: true
