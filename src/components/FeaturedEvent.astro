@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from "./ArrowIcon.astro";
 import { Image } from "astro:assets";
 import eventPhoto from "../assets/photos/event-avalanche-red-wings-fans.jpg";
 import avalancheLogo from "../assets/teams/colorado-avalanche.png";
@@ -130,7 +131,7 @@ const { event } = siteConfig;
           rel="noopener noreferrer"
           class="bg-primary px-7 py-4 text-center text-sm font-black uppercase tracking-[.16em] hover:bg-accent hover:text-foreground"
         >
-          Get Tickets →
+          Get Tickets <ArrowIcon direction="right" />
         </a>
         <a
           href={siteConfig.flyerUrl}
@@ -138,7 +139,7 @@ const { event } = siteConfig;
           rel="noopener noreferrer"
           class="border-2 border-white px-7 py-[14px] text-center text-sm font-black uppercase tracking-[.16em] hover:bg-white hover:text-foreground"
         >
-          View Event Flyer ↗
+          View Event Flyer <ArrowIcon />
         </a>
       </div>
 

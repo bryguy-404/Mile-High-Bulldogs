@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from "./ArrowIcon.astro";
 import { swagContact } from '../lib/swag';
 ---
 
@@ -15,8 +16,8 @@ import { swagContact } from '../lib/swag';
     </div>
     <p id="order-description">Call or email Loni to order this item. She’ll help you confirm sizes, availability, and payment.</p>
     <div class="contact-options">
-      <a class="call-link" href={swagContact.phoneHref}><span>Call {swagContact.name} <span aria-hidden="true">↗</span></span><strong>{swagContact.phone}</strong></a>
-      <a id="order-email" class="email-link" href={`mailto:${swagContact.email}`}><span>Email {swagContact.name} <span aria-hidden="true">↗</span></span><strong>{swagContact.email}</strong></a>
+      <a class="call-link" href={swagContact.phoneHref}><span>Call {swagContact.name} <ArrowIcon /></span><strong>{swagContact.phone}</strong></a>
+      <a id="order-email" class="email-link" href={`mailto:${swagContact.email}`}><span>Email {swagContact.name} <ArrowIcon /></span><strong>{swagContact.email}</strong></a>
     </div>
     <p class="email-note">Your email will include the product name. Just add your size and quantity.</p>
   </div>

@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from "../components/ArrowIcon.astro";
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -13,7 +14,7 @@ const [tee, ...collection] = swag;
   <main id="main">
     <section class="swag-intro">
       <div class="wrap">
-        <a class="back-link" href="/">← Back to Bulldog Country</a>
+        <a class="back-link" href="/"><ArrowIcon direction="left" /> Back to Bulldog Country</a>
         <div class="intro-line">
           <h1>Bulldog pride.<br /><span>Mile High style.</span></h1>
           <div class="intro-copy">
@@ -28,7 +29,7 @@ const [tee, ...collection] = swag;
       <article class="featured">
         <a href={`/images/swag/${tee.id}.webp`} class="product-image featured-image" data-preview data-title={tee.type} aria-label={`Enlarge ${tee.type}`}>
           <img src={`/images/swag/${tee.id}.webp`} alt={tee.alt} width="1500" height="681" fetchpriority="high" />
-          <span class="zoom-label" aria-hidden="true">Take a closer look ↗</span>
+          <span class="zoom-label" aria-hidden="true">Take a closer look <ArrowIcon /></span>
         </a>
         <div class="featured-copy">
           <p class="eyebrow">{tee.brand} · The everyday essential</p>
@@ -36,8 +37,8 @@ const [tee, ...collection] = swag;
           <p>{tee.description}</p>
           <div class="product-meta"><span>{tee.size}</span><span><strong>${tee.price}</strong> retail</span></div>
           <div class="product-actions">
-            <a class="order-button" href={swagOrderEmail(tee.type)} data-order data-product={tee.type} data-image={`/images/swag/${tee.id}.webp`} data-alt={tee.alt}>Order Now <span class="sr-only">— {tee.type}</span><span aria-hidden="true">↗</span></a>
-            <a class="sheet-link" href={`/downloads/swag/${tee.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {tee.type}</span><span aria-hidden="true">↗</span><small>PDF</small></a>
+            <a class="order-button" href={swagOrderEmail(tee.type)} data-order data-product={tee.type} data-image={`/images/swag/${tee.id}.webp`} data-alt={tee.alt}>Order Now <span class="sr-only">— {tee.type}</span><ArrowIcon /></a>
+            <a class="sheet-link" href={`/downloads/swag/${tee.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {tee.type}</span><ArrowIcon /><small>PDF</small></a>
           </div>
         </div>
       </article>
@@ -51,7 +52,7 @@ const [tee, ...collection] = swag;
           <article class="product" data-reveal>
             <a href={`/images/swag/${item.id}.webp`} class:list={['product-image', { 'headwear-image': ['00195', '21595'].includes(item.id) }]} data-preview data-title={item.name} aria-label={`Enlarge ${item.name}`}>
               <img src={`/images/swag/${item.id}.webp`} alt={item.alt} width="1200" height="1200" loading="lazy" decoding="async" />
-              <span class="zoom-label" aria-hidden="true">Closer look ↗</span>
+              <span class="zoom-label" aria-hidden="true">Closer look <ArrowIcon /></span>
             </a>
             <div class="product-info">
               <p class="eyebrow">{item.brand} · {item.type}</p>
@@ -59,8 +60,8 @@ const [tee, ...collection] = swag;
               <p class="description">{item.description}</p>
               <p class="size">{item.size}</p>
               <div class="product-actions">
-                <a class="order-button" href={swagOrderEmail(item.name)} data-order data-product={item.name} data-image={`/images/swag/${item.id}.webp`} data-alt={item.alt}>Order Now <span class="sr-only">— {item.name}</span><span aria-hidden="true">↗</span></a>
-                <a class="sheet-link" href={`/downloads/swag/${item.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {item.name}</span><span aria-hidden="true">↗</span><small>PDF</small></a>
+                <a class="order-button" href={swagOrderEmail(item.name)} data-order data-product={item.name} data-image={`/images/swag/${item.id}.webp`} data-alt={item.alt}>Order Now <span class="sr-only">— {item.name}</span><ArrowIcon /></a>
+                <a class="sheet-link" href={`/downloads/swag/${item.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {item.name}</span><ArrowIcon /><small>PDF</small></a>
               </div>
             </div>
           </article>
