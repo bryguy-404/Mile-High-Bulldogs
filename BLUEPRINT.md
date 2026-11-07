@@ -109,3 +109,11 @@ Verification: production build and Astro check passed with zero errors, warnings
 Preview at completion: http://localhost:4330/swag/. Screenshot: `.loop/swag/preview.png`. Source standards applied: ADA AI Design and Build Standard v1.1 (October 2026), via the installed website-task-execution references. The pre-existing change to `visual-diff.mjs` was left untouched.
 
 Publication approval: Bryan approved the showcase and explicitly requested committing and pushing it to `main` for deployment on November 7, 2026. Publication scope is this swag showcase and its navigation/assets; the unrelated existing `visual-diff.mjs` edit is excluded.
+
+### Direct ordering follow-up — November 7, 2026
+
+Bryan requested an Order Now button for every product and a matching contact popup. Verified Loni's contact details from her September 27 email within Luke's forwarded “FW: Mile High Website” thread: Dezigns with Loni LLC, 231-598-9194, designswithloni@gmail.com. Use the source spelling “Loni.” Contact configuration and product-specific mailto generation live in `src/lib/swag.ts`; the shared popup is `src/components/SwagOrderDialog.astro`.
+
+Every product now opens the same branded native dialog with its name/image, clickable phone number, and email link carrying that product in the subject and an editable size/quantity prompt in the body. Order Now links fall back to product-specific emails without JavaScript. Updated the former preview-only wording to explain direct ordering. No checkout, automatic message, call, or payment was performed. Continuing the approved main/deploy workflow for this follow-up.
+
+Checks: all seven popup selections and email subjects matched their products; phone and recipient matched the source. Phone layout at 390 × 844 had no dialog overflow. Close button and Escape work; existing image zoom retained. Build/type checks passed. Source screenshots and verification artifacts remain in `.loop/swag/`. The unrelated `visual-diff.mjs` modification remains excluded.

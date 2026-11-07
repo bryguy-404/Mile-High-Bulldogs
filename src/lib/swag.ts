@@ -1,5 +1,17 @@
 // Source: the seven product PDFs supplied by Luke Wyckoff, November 7, 2026.
-// Display only; no availability or ordering is implied.
+// Orders are arranged directly with the supplier; availability is confirmed by Loni.
+// Contact verified in Loni's September 27 email forwarded by Luke in “FW: Mile High Website”.
+export const swagContact = {
+  name: 'Loni',
+  business: 'Dezigns with Loni LLC',
+  phone: '231-598-9194',
+  phoneHref: 'tel:+12315989194',
+  email: 'designswithloni@gmail.com',
+} as const;
+
+export const swagOrderEmail = (product: string) =>
+  `mailto:${swagContact.email}?subject=${encodeURIComponent(`Mile High Bulldogs order — ${product}`)}&body=${encodeURIComponent(`Hi Loni,\n\nI'd like to order this item from the Mile High Bulldogs collection: ${product}.\n\nSize (if applicable):\nQuantity:\n\nPlease let me know availability and how to complete my order.\n\nThank you!`)}`;
+
 export const swag = [
   { id: '00860', brand: 'Gildan', name: 'The everyday Bulldog tee.', type: 'Unisex Softstyle® Midweight T-Shirt', price: 22, size: 'S–4XL', description: 'Soft, ring-spun cotton in a modern classic fit. Bulldog pride up front. Mile High on the back.', alt: 'White Gildan T-shirt, front and back, with the Bulldog mountain graphic and Mile High Bulldog lettering.' },
   { id: '20384', brand: 'Champion', name: 'Reverse Weave® Crewneck', type: 'Unisex sweatshirt', price: 67, size: 'S–3XL', description: 'A heavyweight, relaxed-fit crewneck with a ribbed collar and cuffs, plus Mile High embroidery on the sleeve.', alt: 'White Champion crewneck showing the chest Bulldog logo, back, and embroidered Mile High sleeve detail.' },

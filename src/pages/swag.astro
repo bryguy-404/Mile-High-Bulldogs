@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { swag } from '../lib/swag';
+import SwagOrderDialog from '../components/SwagOrderDialog.astro';
+import { swag, swagOrderEmail } from '../lib/swag';
 const [tee, ...collection] = swag;
 ---
 
@@ -17,7 +18,7 @@ const [tee, ...collection] = swag;
           <h1>Bulldog pride.<br /><span>Mile High style.</span></h1>
           <div class="intro-copy">
             <p>From game day to every day. A first look at the gear that brings Ferris pride to Colorado.</p>
-            <span class="preview-label">The swag collection · Preview</span>
+            <span class="preview-label">The swag collection · Order with Loni</span>
           </div>
         </div>
       </div>
@@ -34,7 +35,10 @@ const [tee, ...collection] = swag;
           <h2>{tee.name}</h2>
           <p>{tee.description}</p>
           <div class="product-meta"><span>{tee.size}</span><span><strong>${tee.price}</strong> retail</span></div>
-          <a class="sheet-link" href={`/downloads/swag/${tee.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {tee.type}</span><span aria-hidden="true">↗</span><small>PDF</small></a>
+          <div class="product-actions">
+            <a class="order-button" href={swagOrderEmail(tee.type)} data-order data-product={tee.type} data-image={`/images/swag/${tee.id}.webp`} data-alt={tee.alt}>Order Now <span class="sr-only">— {tee.type}</span><span aria-hidden="true">↗</span></a>
+            <a class="sheet-link" href={`/downloads/swag/${tee.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {tee.type}</span><span aria-hidden="true">↗</span><small>PDF</small></a>
+          </div>
         </div>
       </article>
 
@@ -54,18 +58,22 @@ const [tee, ...collection] = swag;
               <div class="product-title"><h3>{item.name}</h3><span class="price"><strong>${item.price}</strong><small>Retail</small></span></div>
               <p class="description">{item.description}</p>
               <p class="size">{item.size}</p>
-              <a class="sheet-link" href={`/downloads/swag/${item.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {item.name}</span><span aria-hidden="true">↗</span><small>PDF</small></a>
+              <div class="product-actions">
+                <a class="order-button" href={swagOrderEmail(item.name)} data-order data-product={item.name} data-image={`/images/swag/${item.id}.webp`} data-alt={item.alt}>Order Now <span class="sr-only">— {item.name}</span><span aria-hidden="true">↗</span></a>
+                <a class="sheet-link" href={`/downloads/swag/${item.id}.pdf`} target="_blank" rel="noopener noreferrer">View product sheet <span class="sr-only">for {item.name}</span><span aria-hidden="true">↗</span><small>PDF</small></a>
+              </div>
             </div>
           </article>
         ))}
       </div>
       <div class="collection-note">
         <p class="font-heading">Once a Bulldog. Always a Bulldog.</p>
-        <p>A preview of the collection. Retail prices and details are shown from the product sheets. Online ordering is not available here.</p>
+        <p>Found your gear? Select Order Now to call or email Loni at Dezigns with Loni LLC. She’ll help you confirm sizes, availability, and payment.</p>
       </div>
     </section>
   </main>
   <Footer />
+  <SwagOrderDialog />
   <dialog id="swag-preview" aria-labelledby="preview-title">
     <div class="preview-bar"><h2 id="preview-title"></h2><button type="button" id="close-preview" aria-label="Close enlarged image">Close ×</button></div>
     <img id="preview-image" alt="" />
@@ -138,6 +146,9 @@ const [tee, ...collection] = swag;
   .sheet-link { display: inline-flex; gap: 8px; align-items: center; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; border-bottom: 2px solid var(--color-primary); padding: 8px 0; }
   .sheet-link:hover { color: var(--color-primary); }
   .sheet-link small { font-size: 9px; font-weight: 600; color: var(--color-muted); }
+  .product-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 18px; }
+  .order-button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 48px; padding: 14px 20px; background: var(--color-primary); color: white; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+  .order-button:hover { background: var(--color-secondary); }
   .collection-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding-top: 64px; padding-bottom: 24px; }
   .collection-heading h2 { font-size: clamp(2.3rem, 4vw, 3.5rem); line-height: 1; }
   .collection-heading p { font-size: 13px; color: var(--color-muted); }
