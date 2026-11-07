@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import logo from "../assets/brand/mile-high-bulldogs.svg";
 import { siteConfig } from "../lib/site.config";
 
+const home = Astro.url.pathname === "/" ? "" : "/";
+
 const navLinks = [
   { href: "#event", label: "Events" },
   { href: "#story", label: "Our Story" },
@@ -24,7 +26,7 @@ const mobileLinks = [
     class="header-inner mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6"
   >
     <a
-      href="#top"
+      href={`${home}#top`}
       class="logo-link flex shrink-0 items-center"
       aria-label="Mile High Bulldogs home"
     >
@@ -45,7 +47,7 @@ const mobileLinks = [
     >
       {
         navLinks.map((link) => (
-          <a href={link.href} class="hover:text-primary">
+          <a href={`${home}${link.href}`} class="hover:text-primary">
             {link.label}
           </a>
         ))
@@ -58,14 +60,13 @@ const mobileLinks = [
       >
         Get Tickets
       </a>
-      <button
-        type="button"
-        disabled
-        class="cursor-not-allowed border-2 border-foreground/35 px-4 py-[10px] text-center text-foreground/50"
-        title="The Mile High Bulldogs swag shop is coming soon"
+      <a
+        href="/swag/"
+        aria-current={Astro.url.pathname.startsWith('/swag') ? 'page' : undefined}
+        class="border-2 border-foreground px-4 py-[10px] text-center hover:bg-accent"
       >
-        Get Swag <span aria-hidden="true">—</span> Coming Soon
-      </button>
+        Get Swag <span aria-hidden="true">↗</span>
+      </a>
     </nav>
 
     <button
@@ -92,7 +93,7 @@ const mobileLinks = [
     <div class="grid gap-3 font-extrabold uppercase tracking-wider">
       {
         mobileLinks.map((link) => (
-          <a href={link.href}>{link.label}</a>
+          <a href={`${home}${link.href}`}>{link.label}</a>
         ))
       }
       <div class="mt-2 flex items-center gap-3 border-t-2 border-foreground/20 pt-4">
@@ -122,13 +123,13 @@ const mobileLinks = [
             <circle cx="17.4" cy="6.7" r="1" class="fill-primary stroke-none" />
           </svg>
         </a>
-        <button
-          type="button"
-          disabled
-          class="ml-auto cursor-not-allowed border-2 border-foreground/35 px-3 py-2 text-[10px] text-foreground/55"
+        <a
+          href="/swag/"
+          aria-current={Astro.url.pathname.startsWith('/swag') ? 'page' : undefined}
+          class="ml-auto border-2 border-foreground bg-background px-4 py-3 text-xs"
         >
-          Get Swag — Coming Soon
-        </button>
+          Get Swag ↗
+        </a>
       </div>
     </div>
   </nav>

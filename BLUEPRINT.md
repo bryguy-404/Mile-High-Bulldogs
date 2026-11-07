@@ -95,3 +95,17 @@ A loud, brutalist game-day poster translated to the web: zero border-radius, thi
 - Hard offset shadow is the signature depth cue (18px 18px 0 #FFD043); never use soft blurred card shadows.
 - Interaction and motion: smooth in-page scrolling; hovers are flat color swaps (crimson to maroon, gold to white, outline buttons invert); focus-visible shows a 3px gold outline offset 3px; the mobile menu is a show/hide with aria-expanded sync that closes on link tap and Escape.
 - Placeholder discipline: client assets are explicitly stubbed — logo (data URL slot), ticket URL/venue/time/pricing, member testimonial, all gallery photos, hype-reel video, and social URLs. Reproduce the visible placeholder notes rather than inventing content.
+
+## Swag showcase — November 7, 2026
+
+Bryan authorized a display-only showcase behind the existing Get Swag button, matching the current website. Implemented `/swag/` using shared navigation, footer, colors, and typography. Desktop and mobile Get Swag links now open the collection; homepage section links resolve correctly from this new route. No deployment, checkout, inventory, or ordering integration was requested or performed.
+
+Source: Luke Wyckoff's November 7 email, “FW: Mile High Website,” and its seven product PDFs. All seven PDF pages were visually reviewed. Product images were extracted from their artwork areas and optimized as WebP; original PDFs remain available through each product-sheet link. Retail prices and sizes follow the sheets. The men's attachment filename uses 153533 while its printed item number is 15353; filenames retain the attachment identifier without presenting an unverified item number to visitors.
+
+Implementation: `src/pages/swag.astro`, `src/lib/swag.ts`, `src/components/Header.astro`, `public/images/swag/`, and `public/downloads/swag/`. Native image dialog supports Escape, close button, backdrop dismissal, and focus return; direct image links remain usable without JavaScript. Below-fold groups fade and rise 28px (18px on phones) over 700ms, with reduced-motion CSS and media-change handling. Initial HTML has no hidden content.
+
+Verification: production build and Astro check passed with zero errors, warnings, or hints. In-app browser checked desktop (1280px), intermediate (820px), and phone (390px) layouts with no horizontal overflow, navigation from homepage into swag and back to Our Story, desktop Escape/focus restoration, mobile image opening/closing, and actual fade-plus-position progression. All seven image URLs and seven PDF URLs returned 200; PDF signatures verified. Reduced-motion and no-JavaScript fallbacks were code/static-output reviewed, not independently browser-emulated. Independent visual review ran twice; spacing, text labels, and image framing were refined. Final critic score 7.8/10, with remaining polish mainly tied to the source artwork's repeated scenic collages and accessory aspect ratios; original artwork was preserved. This is a scoped preview, not whole-site launch approval.
+
+Preview at completion: http://localhost:4330/swag/. Screenshot: `.loop/swag/preview.png`. Source standards applied: ADA AI Design and Build Standard v1.1 (October 2026), via the installed website-task-execution references. The pre-existing change to `visual-diff.mjs` was left untouched.
+
+Publication approval: Bryan approved the showcase and explicitly requested committing and pushing it to `main` for deployment on November 7, 2026. Publication scope is this swag showcase and its navigation/assets; the unrelated existing `visual-diff.mjs` edit is excluded.
